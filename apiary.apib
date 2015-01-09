@@ -12,29 +12,6 @@ Customers related resources of the **F&O Phoenix API**
 
 ## Customers Collection [/customers]
 
-The Customer resource has the following attributes:
-
-- > id
-- website_id
-- created_at
-- updated_at
-- id_hash
-- email
-- first_name
-- last_name
-- gender
-- store_credit
-- facebook_id
-- google_id
-- style
-- shirt_size
-- pants_size
-- blazer_size
-- shoe_size
-- is_first_time_buyer
-- is_hc_member
-
-The states *id* and *created_at* are assigned by the F&O Phoenix API at the moment of creation.
 
 
 ### List all Customers [GET]
@@ -132,6 +109,29 @@ The states *id* and *created_at* are assigned by the F&O Phoenix API at the mome
 + Response 500 (application/json)
         
 ## Customers [/customers/{id}]
+
+Attributes:
+
+- `id` - Customer's ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+- `website_id` - The website id associated to the Customer's account
+- `email` - Customer's Email Address
+- `first_name` - Customer's first name
+- `last_name` - Customer's last name
+- `gender` - Customer's gender (male or female)
+- `id_hash` - Customer's encrypted ID hash
+- `store_credit` - Customer's Store Credit (can't be updated from here)
+- `facebook_id` - Customer's facebook ID
+- `google_id` - Customer's google ID
+- `style` - Customer's style (casual, preppy, etc.)
+- `shirt_size` - Customer's shirt size (XL, L...)
+- `pants_size` - Customer's pants_size (30, 32...)
+- `blazer_size` - Customer's blazer size (40R, 42R...)
+- `shoe_size` - Customer's shoe size (10, 11...)
+- `default_currency` - Customer's default Currency (associated to website_id)
+- `is_hc_member` - Customer's subscription status for Hunt Club
+- `is_first_time_buyer` - Has Customer purchased anything before? Related to Order history
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
