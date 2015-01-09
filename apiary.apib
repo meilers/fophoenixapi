@@ -7,6 +7,7 @@ Universal API for Frank & Oak.
 Customers related resources of the **F&O Phoenix API**
 
 ## Customers Collection [/customers]
+
 ### List all Customers [GET]
 + Response 200 (application/json)
 
@@ -102,7 +103,30 @@ Customers related resources of the **F&O Phoenix API**
 + Response 500 (application/json)
         
 ## Customers [/customers/{id}]
-A single User object with all its details
+
+The Customer resource has the following attributes:
+
+- id
+- website_id
+- created_at
+- updated_at
+- id_hash
+- email
+- first_name
+- last_name
+- gender
+- store_credit
+- facebook_id
+- google_id
+- style
+- shirt_size
+- pants_size
+- blazer_size
+- shoe_size
+- is_first_time_buyer
+- is_hc_member
+
+The states *id* and *created_at* are assigned by the F&O Phoenix API at the moment of creation.
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
