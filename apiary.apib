@@ -273,7 +273,7 @@ Attributes
             }
         
         
-+ Response 200 (application/json)
++ Response 200
 
     [Customer][]
     
@@ -289,3 +289,28 @@ Attributes
 + Response 400 (application/json)
 
 + Response 500 (application/json)
+
+
+
+# Group Shops
+
+Shops are categories of products that can be nested.
+
+Attributes
+- `id` - Shop's ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+- `website_id` - The website id associated to the Shop
+- `store_id` - The store id associated to the Shop
+- `name` - The name of the shop
+- `image_urls` - A list of image urls of the shop
+- `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
+- `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
+- `is_featured` - Is the shop featured (on the front page)? - *optional*
+- `is_hc_exclusive` - Is the shop only visible to HC members? - *optional*
+- `is_new_buyer_exclusive` - Is the shop only visible to members with no order history? - *optional*
+- `show_name_over_images` - Should the name of the shop be shown over images? - *optional*
+- `show_expiration` - If expires_at exists, show expiration date - *optional*
+- `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
+
+
