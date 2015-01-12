@@ -17,7 +17,10 @@ Attributes
 - `first_name` - Customer's first name
 - `last_name` - Customer's last name
 - `gender` - Customer's gender (male or female) - *optional*
+- `birthdate` - Customer's birthdate - *optional*
 - `id_hash` - Customer's encrypted ID hash
+- `default_shipping_address_id` - Customer's default shipping address ID - *optional*
+- `default_billing_address_id` - Customer's default billing address ID - *optional*
 - `store_credit` - Customer's Store Credit (can't be updated from here)
 - `facebook_id` - Customer's facebook ID - *optional*
 - `google_id` - Customer's google ID - *optional*
@@ -114,16 +117,38 @@ Attributes
 
 + Request (application/json)
 
-        {
-            "website_id": 1, 
-            "email": "michael@frankandoak.com", 
-            "first_name": "Michael", 
-            "last_name": "Eilers Smith", 
-            "gender": "male", 
-            "birthdate": "03/17/1983", 
-            "facebook_id": 4324325242, 
-            "google_id": 7643322533243
-        }
+    Attributes
+    - `website_id` - The website id associated to the Customer's account
+    - `email` - Customer's Email Address
+    - `first_name` - Customer's first name
+    - `last_name` - Customer's last name
+    - `gender` - Customer's gender (male or female) - *optional*
+    - `facebook_id` - Customer's facebook ID - *optional*
+    - `google_id` - Customer's google ID - *optional*
+    - `style` - Customer's style (casual, preppy, etc.) - *optional*
+    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
+    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+    
+            {
+                "website_id": 1, 
+                "email": "michael@frankandoak.com", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "gender": "male", 
+                "birthdate": "03/17/1983", 
+                "facebook_id": 4324325242, 
+                "google_id": 7643322533243
+            }
 
 + Response 201 (application/json)
 
