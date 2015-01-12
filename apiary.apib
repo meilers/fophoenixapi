@@ -11,7 +11,7 @@ Attributes
 
 - `id` - Customer's ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
 - `website_id` - The website id associated to the Customer's account
 - `email` - Customer's Email Address
 - `first_name` - Customer's first name
@@ -37,6 +37,9 @@ Attributes
 
     + Headers
     
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr      
+            
     + Body
 
             [
@@ -107,33 +110,33 @@ Attributes
 + Request (application/json)
 
         {
-         "website_id": 1, 
-         "email": "michael@frankandoak.com", 
-         "first_name": "Michael", 
-         "last_name": "Eilers Smith", 
-         "gender": "male", 
-         "birthdate": "03/17/1983", 
-         "facebook_id": 4324325242, 
-         "google_id": 7643322533243, 
+            "website_id": 1, 
+            "email": "michael@frankandoak.com", 
+            "first_name": "Michael", 
+            "last_name": "Eilers Smith", 
+            "gender": "male", 
+            "birthdate": "03/17/1983", 
+            "facebook_id": 4324325242, 
+            "google_id": 7643322533243
         }
 
 + Response 201 (application/json)
 
         {
-         "id": 1, 
-         "website_id": 1, 
-         "created_at": "2015-01-07T13:57:00Z", 
-         "id_hash": "32fe!ifew&?", 
-         "email": "michael@frankandoak.com", 
-         "first_name": "Michael", 
-         "last_name": "Eilers Smith", 
-         "gender": "male", 
-         "birthdate": "03/17/1983", 
-         "store_credit": 0,00, 
-         "facebook_id": 4324325242, 
-         "google_id": 7643322533243, 
-         "is_first_time_buyer":true,
-         "is_hc_member":false
+            "id": 1, 
+            "website_id": 1, 
+            "created_at": "2015-01-07T13:57:00Z", 
+            "id_hash": "32fe!ifew&?", 
+            "email": "michael@frankandoak.com", 
+            "first_name": "Michael", 
+            "last_name": "Eilers Smith", 
+            "gender": "male", 
+            "birthdate": "03/17/1983", 
+            "store_credit": 0,00, 
+            "facebook_id": 4324325242, 
+            "google_id": 7643322533243, 
+            "is_first_time_buyer":true,
+            "is_hc_member":false
         }
         
 + Response 400 (application/json)
@@ -141,29 +144,6 @@ Attributes
 + Response 500 (application/json)
         
 ## Customer [/customers/{id}]
-
-Attributes:
-
-- `id` - Customer's ID
-- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
-- `website_id` - The website id associated to the Customer's account
-- `email` - Customer's Email Address
-- `first_name` - Customer's first name
-- `last_name` - Customer's last name
-- `gender` - Customer's gender (male or female)
-- `id_hash` - Customer's encrypted ID hash
-- `store_credit` - Customer's Store Credit (can't be updated from here)
-- `facebook_id` - Customer's facebook ID
-- `google_id` - Customer's google ID
-- `style` - Customer's style (casual, preppy, etc.)
-- `shirt_size` - Customer's shirt size (XL, L...)
-- `pants_size` - Customer's pants_size (30, 32...)
-- `blazer_size` - Customer's blazer size (40R, 42R...)
-- `shoe_size` - Customer's shoe size (10, 11...)
-- `default_currency` - Customer's default Currency (associated to website_id)
-- `is_hc_member` - Customer's subscription status for Hunt Club
-- `is_first_time_buyer` - Has Customer purchased anything before? Related to Order history
 
 + Model (application/json)
 
@@ -204,8 +184,8 @@ Attributes:
 
     + Header
 
-        If-Modified-Since: 2015-01-07T13:57:00Z
-        X-Session-Token: grg42gtwegsfr           
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
             
 
 + Response 200 (application/json)
@@ -229,21 +209,21 @@ Attributes:
 
     + Body
 
-        { 
-        "website_id": 1, 
-        "email": "michael@frankandoak.com", 
-        "first_name": "Michael", 
-        "last_name": "Eilers Smith", 
-        "gender": "male", 
-        "birthdate": "03/17/1983", 
-        "facebook_id": 4324325242, 
-        "google_id": 7643322533243, 
-        "style":"casual", 
-        "shirt_size":"L", 
-        "pants_size":"34", 
-        "blazer_size":"40R", 
-        "shoe_size":"11"
-        }
+            { 
+            "website_id": 1, 
+            "email": "michael@frankandoak.com", 
+            "first_name": "Michael", 
+            "last_name": "Eilers Smith", 
+            "gender": "male", 
+            "birthdate": "03/17/1983", 
+            "facebook_id": 4324325242, 
+            "google_id": 7643322533243, 
+            "style":"casual", 
+            "shirt_size":"L", 
+            "pants_size":"34", 
+            "blazer_size":"40R", 
+            "shoe_size":"11"
+            }
         
         
 + Response 200 (application/json)
