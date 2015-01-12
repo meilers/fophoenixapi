@@ -674,3 +674,363 @@ Attributes
 + Response 400 (application/json)
 
 + Response 500 (application/json)
+
+
+## Products Collection [/shops/{id}/products]
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 1, 
+                    "website_id": 1, 
+                    "store_id": 1, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "updated_at": "2014-12-31T09:11:53Z", 
+                    "name": "The Forward Issue", 
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                    "starts_at": "2015-01-01T00:00:00Z", 
+                    "expires_at": "2015-31-01T00:00:00Z", 
+                    "is_featured": true
+                }, 
+                            {
+                    "id": 7, 
+                    "website_id": 1, 
+                    "store_id": 1, 
+                    "created_at": "2015-02-15T13:57:00Z", 
+                    "updated_at": "2014-04-31T09:11:53Z", 
+                    "name": "Welcome Offer", 
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                    "expires_at": "2015-03-31T00:00:00Z", 
+                    "is_featured": true,
+                    "is_new_buyer_exclusive": true, 
+                    "hide_name_over_images": true,
+                    "show_expiration": true, 
+                    "show_expiration_as_countdown": true
+                }, 
+                
+                {
+                    "id": 22, 
+                    "website_id": 1, 
+                    "store_id": 1, 
+                    "created_at": "2014-03-15T13:57:00Z", 
+                    "updated_at": "2014-04-31T09:11:53Z", 
+                    "name": "Pants", 
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                        ],
+                    "expires_at": "2015-01-31T00:00:00Z", 
+                    "is_new_buyer_exclusive": true, 
+                    "subshops": 
+                        [
+                            {
+                                "id": 221, 
+                                "website_id": 1, 
+                                "store_id": 1, 
+                                "created_at": "2014-03-16T13:57:00Z", 
+                                "updated_at": "2014-04-31T09:11:53Z", 
+                                "name": "Casual Pants", 
+                                "image_urls": 
+                                    [
+                                        "https://...jpg",
+                                    ]
+                            },
+                            {
+                                "id": 222, 
+                                "website_id": 1, 
+                                "store_id": 1, 
+                                "created_at": "2014-03-16T13:57:00Z", 
+                                "updated_at": "2014-04-31T09:11:53Z", 
+                                "name": "Dressy Pants", 
+                                "image_urls": 
+                                    [
+                                        "https://...jpg",
+                                    ]
+                            }
+                        ]
+                }
+            ]
+
+
+### List all Products [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Products Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create a Product [POST]
+
+
++ Request (application/json)
+
+    Attributes
+    - `website_id` - The website id associated to the Shop
+    - `store_id` - The store id associated to the Shop
+    - `name` - The name of the shop
+    - `image_urls` - A list of image urls of the shop
+    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
+    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
+    - `is_featured` - Is the shop featured (on the front page)? - *optional*
+    - `is_hc_exclusive` - Is the shop only visible to HC members? - *optional*
+    - `is_new_buyer_exclusive` - Is the shop only visible to members with no order history? - *optional*
+    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
+    - `hide_name_over_images` - Should the name of the shop be shown over images? - *optional*
+    - `show_expiration` - If expires_at exists, show expiration date - *optional*
+    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
+    - `subshop_ids` - Nested shop ids - *optional*
+
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+   
+            {
+                "website_id": 1, 
+                "store_id": 1, 
+                "name": "New HC Member Shop", 
+                "image_urls": 
+                    [
+                        "https://...jpg"
+                    ],
+                "starts_at": "2015-01-01T00:00:00Z", 
+                "expires_at": "2015-12-31T23:59:59Z", 
+                "is_hc_exclusive": true, 
+                "is_first_crate_exclusive": true, 
+                "subshop_ids": 
+                    [
+                        311, 
+                        312, 
+                        313
+                    ]
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": 310
+                "website_id": 1, 
+                "store_id": 1, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "name": "New HC Member Shop", 
+                "image_urls": 
+                    [
+                        "https://...jpg"
+                    ],
+                "starts_at": "2015-01-01T00:00:00Z", 
+                "expires_at": "2015-12-31T23:59:59Z", 
+                "is_hc_exclusive": true, 
+                "is_first_crate_exclusive": true, 
+                "subshops": 
+                    [
+                        {
+                            "id": 311,
+                            "website_id": 1, 
+                            "store_id": 1, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Shirts", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }, 
+                        {
+                            "id": 312,
+                            "website_id": 1, 
+                            "store_id": 1, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Blazers", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }, 
+                        {
+                            "id": 313,
+                            "website_id": 1, 
+                            "store_id": 1, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }
+                    ]
+            }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Product [/shops/{id}/products/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id": 22, 
+                "website_id": 1, 
+                "store_id": 1, 
+                "created_at": "2014-03-15T13:57:00Z", 
+                "updated_at": "2014-04-31T09:11:53Z", 
+                "name": "Pants", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                    ],
+                "expires_at": "2015-01-31T00:00:00Z", 
+                "is_new_buyer_exclusive": true, 
+                "subshops": 
+                    [
+                        {
+                            "id": 221, 
+                            "website_id": 1, 
+                            "store_id": 1, 
+                            "created_at": "2014-03-16T13:57:00Z", 
+                            "updated_at": "2014-04-31T09:11:53Z", 
+                            "name": "Casual Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                ]
+                        },
+                        {
+                            "id": 222, 
+                            "website_id": 1, 
+                            "store_id": 1, 
+                            "created_at": "2014-03-16T13:57:00Z", 
+                            "updated_at": "2014-04-31T09:11:53Z", 
+                            "name": "Dressy Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                ]
+                        }
+                    ]
+            }
+            
+            
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
+
+### Retrieve a Product [GET]
+        
++ Request (application/json)
+
+    Attributes
+    - `website_id` - The website id associated to the shop
+    
+    + Header
+
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Product][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update a Product [PUT]
++ Request (application/json)
+
+    Attributes
+    - `website_id` - The website id associated to the Shop
+    - `store_id` - The store id associated to the Shop
+    - `name` - The name of the shop
+    - `image_urls` - A list of image urls of the shop
+    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
+    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
+    - `is_featured` - Is the shop featured (on the front page)? - *optional*
+    - `is_hc_exclusive` - Is the shop only visible to HC members? - *optional*
+    - `is_new_buyer_exclusive` - Is the shop only visible to members with no order history? - *optional*
+    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
+    - `hide_name_over_images` - Should the name of the shop be shown over images? - *optional*
+    - `show_expiration` - If expires_at exists, show expiration date - *optional*
+    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
+    - `subshop_ids` - Nested shop ids - *optional*
+    
+    + Header
+
+    + Body
+
+            {
+                "website_id": 1, 
+                "store_id": 1, 
+                "created_at": "2014-03-15T13:57:00Z", 
+                "updated_at": "2014-04-31T09:11:53Z", 
+                "name": "Pants", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                    ],
+                "expires_at": "2015-01-31T00:00:00Z", 
+                "is_new_buyer_exclusive": true, 
+                "subshop_ids": 
+                    [
+                        221, 
+                        222
+                    ]
+            }
+        
+        
++ Response 200
+
+    [Product][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Product [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
