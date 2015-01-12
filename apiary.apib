@@ -676,7 +676,7 @@ Attributes
 + Response 500 (application/json)
 
 
-## Products Collection [/shops/{id}/products]
+## Shop_Products Collection [/shops/{id}/products]
 
 + Model (application/json)
 
@@ -765,7 +765,7 @@ Attributes
             ]
 
 
-### List all Products [GET]
+### List all Shop_Products [GET]
 
 + Request (application/json)
 
@@ -777,7 +777,7 @@ Attributes
             
 + Response 200
 
-    [Products Collection][]
+    [Shop_Products Collection][]
 
 + Response 304
 
@@ -786,7 +786,7 @@ Attributes
 + Response 500 (application/json)
 
 
-### Create a Product [POST]
+### Create a Shop_Product [POST]
 
 
 + Request (application/json)
@@ -897,7 +897,7 @@ Attributes
 
 + Response 500 (application/json)
         
-## Product [/shops/{id}/products/{id}]
+## Shop_Product [/shops/{id}/products/{id}]
 
 + Model (application/json)
 
@@ -951,7 +951,7 @@ Attributes
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
 
-### Retrieve a Product [GET]
+### Retrieve a Shop_Product [GET]
         
 + Request (application/json)
 
@@ -966,7 +966,7 @@ Attributes
 
 + Response 200
 
-    [Product][]
+    [Shop_Product][]
 
 + Response 304
 
@@ -974,7 +974,7 @@ Attributes
 
 + Response 500 (application/json)
 
-### Update a Product [PUT]
+### Update a Shop_Product [PUT]
 + Request (application/json)
 
     Attributes
@@ -1019,7 +1019,7 @@ Attributes
         
 + Response 200
 
-    [Product][]
+    [Shop_Product][]
     
 + Response 400 (application/json)
 
