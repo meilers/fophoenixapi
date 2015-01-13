@@ -292,7 +292,6 @@ Attributes
 + Response 500 (application/json)
 
 
-
 # Group Shops
 
 Shops are categories of products that can be nested.
@@ -676,7 +675,34 @@ Attributes
 + Response 500 (application/json)
 
 
-## Products Collection [/shops/{id}/products]
+# Group Products
+
+Products are products Einstein.
+
+Attributes
+- `id` - Product ID
+- `website_id` - The website id associated to the product
+- `sku` - The base sku of the product
+- `name` - Full Name
+- `full_images` - Unbounded image (Array of one url)
+- `square_images` - Square images (Array of one url)
+- `original_price` - Price of the product (without discount)
+- `discount_price` - Price of the product (after discount)
+- `huntclub_price` - Price of the product (for HC customers)
+- `favorites_count` - Count of Favorites
+- `is_huntclub_execlusive` - If this product is HC exclusive
+- `inventory_status` - In stock status: (aggregated from its children)
+     - `0` - out of stock
+     - `1` - in stock
+     - `2` - low stock
+- `label` - Extra label on the product (Editor's Picks)
+- `can_add_to_crate` - If this product can be added to Crate or not
+- `is_parent` - Is Product a parent product?
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+
+
+## Products Collection [/products]
 
 + Model (application/json)
 
@@ -777,7 +803,7 @@ Attributes
             
 + Response 200
 
-    [Products Collection][]
+    [Shops Collection][]
 
 + Response 304
 
@@ -897,7 +923,7 @@ Attributes
 
 + Response 500 (application/json)
         
-## Product [/shops/{id}/products/{id}]
+## Product [/products/{id}]
 
 + Model (application/json)
 
