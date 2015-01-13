@@ -294,13 +294,17 @@ Attributes
 
 # Group Products
 
-Products are products Einstein.
-
 Attributes
 - `id` - Product ID
 - `website_id` - The website id associated to the product
-- `sku` - The base sku of the product
-- `name` - Full Name
+- `sku` - The sku of the configurable product
+- `name` - Full name
+- `description` - Description of the product
+- `short_description` - Short description of the product
+- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
+- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
+
+
 - `full_images` - Unbounded image (Array of one url)
 - `square_images` - Square images (Array of one url)
 - `original_price` - Price of the product (without discount)
