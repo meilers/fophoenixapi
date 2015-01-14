@@ -295,27 +295,25 @@ Attributes
 Attributes
 - `id` - Product ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *Optional*
 - `sku` - The sku of the configurable product
 - `name` - Full name
 - `description` - Description of the product
-- `short_description` - Short description of the product
-- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
-- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
+- `short_description` - Short description of the product - *Optional*
+- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
+- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
 - `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
 - `has_options` - Does the product have sizes? 
-
 - `price` - Original price
-- `special_price` - Discounted price
-- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale
-- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale
-- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount)
-- `tier_price_qty` - Quantity required for tier price elligibility
-
-- `gift_message_available` - Message to be added to the product
-- `gift_wrapping_available` - Wrapping to be added to the product
-- `gift_wrapping_price` - Wrapping price
-
+- `special_price` - Discounted price - *Optional*
+- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
+- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
+- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *Optional*
+- `tier_price_qty` - Quantity required for tier price elligibility - *Optional*
+- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *Optional*
+- `gift_message_available` - Message to be added to the product - *Optional*
+- `gift_wrapping_available` - Wrapping to be added to the product - *Optional*
+- `gift_wrapping_price` - Wrapping price - *Optional*
 - `image_urls` - A list of image urls of the category
 
 
@@ -328,83 +326,45 @@ Attributes
 
             [
                 {
-                    "id": 1, 
-                    "website_id": 1, 
-                    "store_id": 1, 
+                    "id": 12, 
                     "created_at": "2014-12-15T13:57:00Z", 
                     "updated_at": "2014-12-31T09:11:53Z", 
-                    "name": "The Forward Issue", 
+                    "name": "Contrast Pocket Shirt in Denim Blue", 
+                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                    "short_description": "Soft cotton-twill button-up"
+                    "new_from_date": "2015-01-01T00:00:00Z", 
+                    "new_to_date": "2015-31-01T00:00:00Z", 
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z", 
                     "image_urls": 
                         [
                             "https://...jpg",
                             "https://...jpg",
                             "https://...jpg"
                         ],
-                    "starts_at": "2015-01-01T00:00:00Z", 
-                    "expires_at": "2015-31-01T00:00:00Z", 
-                    "is_featured": true
                 }, 
                             {
-                    "id": 7, 
-                    "website_id": 1, 
-                    "store_id": 1, 
-                    "created_at": "2015-02-15T13:57:00Z", 
-                    "updated_at": "2014-04-31T09:11:53Z", 
-                    "name": "Welcome Offer", 
+                    "id": 43, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "name": "Denim Popover Shirt", 
+                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 65.00,
+                    "tier_price": 50.00,
+                    "tier_price_qty": 2,
+                    "hc_price": 60.00,
                     "image_urls": 
                         [
+                            "https://...jpg",
                             "https://...jpg",
                             "https://...jpg"
                         ],
-                    "expires_at": "2015-03-31T00:00:00Z", 
-                    "is_featured": true,
-                    "is_new_buyer_exclusive": true, 
-                    "hide_name_over_images": true,
-                    "show_expiration": true, 
-                    "show_expiration_as_countdown": true
                 }, 
-                
-                {
-                    "id": 22, 
-                    "website_id": 1, 
-                    "store_id": 1, 
-                    "created_at": "2014-03-15T13:57:00Z", 
-                    "updated_at": "2014-04-31T09:11:53Z", 
-                    "name": "Pants", 
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                        ],
-                    "expires_at": "2015-01-31T00:00:00Z", 
-                    "is_new_buyer_exclusive": true, 
-                    "subshops": 
-                        [
-                            {
-                                "id": 221, 
-                                "website_id": 1, 
-                                "store_id": 1, 
-                                "created_at": "2014-03-16T13:57:00Z", 
-                                "updated_at": "2014-04-31T09:11:53Z", 
-                                "name": "Casual Pants", 
-                                "image_urls": 
-                                    [
-                                        "https://...jpg",
-                                    ]
-                            },
-                            {
-                                "id": 222, 
-                                "website_id": 1, 
-                                "store_id": 1, 
-                                "created_at": "2014-03-16T13:57:00Z", 
-                                "updated_at": "2014-04-31T09:11:53Z", 
-                                "name": "Dressy Pants", 
-                                "image_urls": 
-                                    [
-                                        "https://...jpg",
-                                    ]
-                            }
-                        ]
-                }
             ]
 
 
