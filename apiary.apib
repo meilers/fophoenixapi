@@ -649,8 +649,8 @@ Attributes
 - `id` - Category's ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
-- `is_active` - Is the category available? - *Optional*
 - `name` - The name of the category
+- `is_active` - Is the category available?
 - `image_urls` - A list of image urls of the category
 - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
 - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
@@ -783,6 +783,7 @@ Attributes
 
     Attributes
     - `name` - The name of the category
+    - `is_active` - Is the category available?
     - `image_urls` - A list of image urls of the category
     - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
     - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
@@ -804,6 +805,7 @@ Attributes
    
             {
                 "name": "New HC Member Shop", 
+                "is_active": true,
                 "image_urls": 
                     [
                         "https://...jpg"
@@ -826,6 +828,7 @@ Attributes
 
             {
                 "id": 310,
+                "is_active": true,
                 "created_at": "2014-12-15T13:57:00Z", 
                 "name": "New HC Member Shop", 
                 "image_urls": 
@@ -840,6 +843,7 @@ Attributes
                     [
                         {
                             "id": 311,
+                            "is_active": true,
                             "created_at": "2014-12-15T13:57:00Z", 
                             "name": "HC Shirts", 
                             "image_urls": 
@@ -850,6 +854,7 @@ Attributes
                         }, 
                         {
                             "id": 312,
+                            "is_active": true,
                             "created_at": "2014-12-15T13:57:00Z", 
                             "name": "HC Blazers", 
                             "image_urls": 
@@ -860,6 +865,7 @@ Attributes
                         }, 
                         {
                             "id": 313,
+                            "is_active": true,
                             "created_at": "2014-12-15T13:57:00Z", 
                             "name": "HC Pants", 
                             "image_urls": 
@@ -885,6 +891,7 @@ Attributes
     
             {
                 "id": 22, 
+                "is_active": true,
                 "created_at": "2014-03-15T13:57:00Z", 
                 "updated_at": "2014-04-31T09:11:53Z", 
                 "name": "Pants", 
@@ -949,8 +956,9 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `name` - The name of the shop
-    - `image_urls` - A list of image urls of the shop
+    - `name` - The name of the shop - *optional*
+    - `is_active` - Is the category available? - *optional*
+    - `image_urls` - A list of image urls of the shop - *optional*
     - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
     - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
     - `is_featured` - Is the shop featured (on the front page)? - *optional*
@@ -967,10 +975,6 @@ Attributes
     + Body
 
             {
-                "website_id": 1, 
-                "store_id": 1, 
-                "created_at": "2014-03-15T13:57:00Z", 
-                "updated_at": "2014-04-31T09:11:53Z", 
                 "name": "Pants", 
                 "image_urls": 
                     [
