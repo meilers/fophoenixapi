@@ -370,6 +370,8 @@ Attributes
 
 ### List all Products [GET]
 
+Re
+
 + Request (application/json)
 
     + Headers
@@ -647,6 +649,7 @@ Attributes
 - `id` - Category's ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `is_active` - Is the category available? - *Optional*
 - `name` - The name of the category
 - `image_urls` - A list of image urls of the category
 - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
@@ -661,7 +664,7 @@ Attributes
 - `subcategories` - Nested categories - *optional*
 
 
-## Categories Collection [/sites/{id}/stores/{id}/categories]
+## Categories Collection [/sites/{id}/stores/{id}/categories?{is_active}]
 
 + Model (application/json)
 
@@ -747,7 +750,9 @@ Attributes
                 }
             ]
 
-
++ Parameters
+    + is_active (boolean) ... Filter categories by availability
+    
 ### List all Categories [GET]
 
 + Request (application/json)
