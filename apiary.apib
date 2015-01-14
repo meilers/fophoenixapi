@@ -302,28 +302,21 @@ Attributes
 - `short_description` - Short description of the product
 - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
 - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
-- `has_options` - Does the product have sizes? (if not, can add directly to cart for example)
+- `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
+- `has_options` - Does the product have sizes? 
 
 - `price` - Original price
 - `special_price` - Discounted price
-- `image_urls` - A list of image urls of the category
+- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale
+- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale
+- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount)
+- `tier_price_qty` - Quantity required for tier price elligibility
+
+- `gift_message_available` - Message to be added to the product
+- `gift_wrapping_available` - Wrapping to be added to the product
+- `gift_wrapping_price` - Wrapping price
 
 - `image_urls` - A list of image urls of the category
-
-- `original_price` - Price of the product (without discount)
-- `discount_price` - Price of the product (after discount)
-- `huntclub_price` - Price of the product (for HC customers)
-- `favorites_count` - Count of Favorites
-- `is_huntclub_execlusive` - If this product is HC exclusive
-- `inventory_status` - In stock status: (aggregated from its children)
-     - `0` - out of stock
-     - `1` - in stock
-     - `2` - low stock
-- `label` - Extra label on the product (Editor's Picks)
-- `can_add_to_crate` - If this product can be added to Crate or not
-- `is_parent` - Is Product a parent product?
-- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
 
 
 ## Products Collection [/products]
