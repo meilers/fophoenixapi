@@ -12,6 +12,7 @@ Attributes
 - `id` - Customer's ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `group_id` - Customer's group
 - `email` - Customer's Email Address
 - `first_name` - Customer's first name
 - `last_name` - Customer's last name
@@ -29,7 +30,7 @@ Attributes
 - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
 - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
 - `default_currency` - Customer's default Currency (associated to website_id)
-- `is_hc_member` - Customer's subscription status for Hunt Club
+- `is_hc_member` - Is the member Hunt Club (use groupe_id == 4 for now)
 - `is_first_time_buyer` - Has Customer purchased anything before? Related to Order history
 
 
@@ -45,6 +46,7 @@ Attributes
                 "id": 1, 
                 "created_at": "2015-01-07T13:57:00Z", 
                 "updated_at": "2015-01-10T09:11:53Z", 
+                "group_id": 4, 
                 "id_hash": "32fe!ifew&?", 
                 "email": "michael@frankandoak.com", 
                 "first_name": "Michael", 
@@ -68,6 +70,7 @@ Attributes
                 "id": 2, 
                 "created_at": "2015-01-07T13:57:00Z", 
                 "updated_at": "2015-01-10T09:11:53Z", 
+                "group_id": 1, 
                 "id_hash": "r!were43e_)", 
                 "email": "sean@frankandoak.com", 
                 "first_name": "Sean", 
@@ -118,6 +121,7 @@ Attributes
 + Request (application/json)
 
     Attributes
+    - `group_id` - Customer's group - *optional*
     - `email` - Customer's Email Address
     - `first_name` - Customer's first name
     - `last_name` - Customer's last name
@@ -153,6 +157,7 @@ Attributes
         {
             "id": 1, 
             "created_at": "2015-01-07T13:57:00Z", 
+            "group_id": 1, 
             "id_hash": "32fe!ifew&?", 
             "email": "michael@frankandoak.com", 
             "first_name": "Michael", 
@@ -180,6 +185,7 @@ Attributes
     
             {
                 "id":                                       1,  
+                "group_id":                                 1, 
                 "created_at":                               "2015-01-07T13:57:00Z", 
                 "updated_at":                               "2015-01-10T09:11:53Z", 
                 "id_hash":                                  "32fe!ifew&?", 
@@ -229,6 +235,7 @@ Attributes
 + Request (application/json)
 
     Attributes
+    - `group_id` - Customer's group - *optional*
     - `email` - Customer's Email Address - *optional*
     - `first_name` - Customer's first name - *optional*
     - `last_name` - Customer's last name - *optional*
@@ -287,15 +294,22 @@ Attributes
 
 Attributes
 - `id` - Product ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
 - `sku` - The sku of the configurable product
 - `name` - Full name
 - `description` - Description of the product
 - `short_description` - Short description of the product
 - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
 - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new
+- `has_options` - Does the product have sizes? (if not, can add directly to cart for example)
 
-- `full_images` - Unbounded image (Array of one url)
-- `square_images` - Square images (Array of one url)
+- `price` - Original price
+- `special_price` - Discounted price
+- `image_urls` - A list of image urls of the category
+
+- `image_urls` - A list of image urls of the category
+
 - `original_price` - Price of the product (without discount)
 - `discount_price` - Price of the product (after discount)
 - `huntclub_price` - Price of the product (for HC customers)
