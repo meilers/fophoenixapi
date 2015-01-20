@@ -290,8 +290,7 @@ Attributes
 
 + Response 500 (application/json)
 
-
-# Group Products
+# Group Options
 
 Attributes
 - `id` - Product ID
@@ -324,343 +323,6 @@ Attributes
 - `image_urls` - A list of image urls of the category - *optional*
 - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
 - `rma_enabled` - Can the item be returned?
-
-
-
-## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
-
-+ Model (application/json)
-
-            
-    + Body
-
-            [
-                {
-                    "id": 12, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "updated_at": "2014-12-31T09:11:53Z", 
-                    "sku": "37-111432-406", 
-                    "name": "Contrast Pocket Shirt in Denim Blue", 
-                    "is_active": true, 
-                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                    "short_description": "Soft cotton-twill button-up"
-                    "new_from_date": "2015-01-01T00:00:00Z", 
-                    "new_to_date": "2015-31-01T00:00:00Z", 
-                    "required_options": true,
-                    "has_options": true,
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z", 
-                    "rma_enabled": true,
-                    "country_of_manufacture": "China",
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
-                    "promo_text": "15% OFF", 
-                    "tags": 
-                        [
-                            "black",
-                            "flanel",
-                            "winter"
-                        ]
-                }, 
-                {
-                    "id": 43, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "sku": "38-111449-421", 
-                    "name": "Denim Popover Shirt", 
-                    "is_active": true, 
-                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
-                    "required_options": true,
-                    "has_options": true,
-                    "price": 65.00,
-                    "tier_price": 50.00,
-                    "tier_price_qty": 2,
-                    "hc_price": 60.00,
-                    "rma_enabled": true,
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
-                }
-            ]
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + is_active (boolean, `true`) ... Filter products by availability
-
-
-### List all Products [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr    
-            
-            
-+ Response 200
-
-    [Products Collection][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-### Create a Product [POST]
-
-
-+ Request (application/json)
-
-    Attributes
-    - `sku` - The sku of the configurable product
-    - `name` - Full name
-    - `description` - Description of the product
-    - `short_description` - Short description of the product - *optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `price` - Original price
-    - `special_price` - Discounted price - *optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-    - `attribute_set` - Attribute set for configurable products (size, color, etc.) - *optional*
-    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned?
-    - `gift_message_available` - Message to be added to the product - *optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-    - `gift_wrapping_price` - Wrapping price - *optional*
-    - `country_of_manufacture` - Country of manufacture - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-
-    + Headers
-    
-            X-Session-Token: grg42gtwegsfr   
-            
-    + Body
-   
-            {
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "sku": "37-111432-406", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "id": 12, 
-                "created_at": "2014-12-15T13:57:00Z", 
-                "sku": "37-111432-406", 
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "required_options": true,
-                "has_options": true,
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-                    
-            }
-        
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-        
-## Product [/sites/{wid}/stores/{sid}/products/{id}]
-
-+ Model (application/json)
-
-    + Header
-    
-    + Body
-    
-            {
-                "id": 12, 
-                "created_at": "2014-12-15T13:57:00Z", 
-                "updated_at": "2014-12-31T09:11:53Z", 
-                "sku": "37-111432-406", 
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "required_options": true,
-                "has_options": true,
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-            }
-            
-            
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
-
-### Retrieve a Product [GET]
-        
-+ Request (application/json)
-
-    Attributes
-    - `website_id` - The website id associated to the shop
-    
-    + Header
-
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr           
-            
-
-+ Response 200
-
-    [Product][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-### Update a Product [PUT]
-+ Request (application/json)
-
-    Attributes
-    - `sku` - The sku of the configurable product - *optional*
-    - `name` - Full name - *optional*
-    - `description` - Description of the product - *optional*
-    - `short_description` - Short description of the product - *optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `price` - Original price - *optional*
-    - `special_price` - Discounted price - *optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned? - *optional*
-    - `gift_message_available` - Message to be added to the product - *optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-    - `gift_wrapping_price` - Wrapping price - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-    
-    + Header
-
-    + Body
-
-            {
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "sku": "37-111432-406", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ]
-            }
-        
-        
-+ Response 200
-
-    [Product][]
-    
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-### Remove a Product [DELETE]
-+ Response 204
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
 
 
 
@@ -978,6 +640,383 @@ Attributes
 + Response 500 (application/json)
 
 
+
+
+# Group Products
+
+Attributes
+- `id` - Product ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `sku` - The sku of the configurable product
+- `name` - Full name
+- `description` - Description of the product
+- `short_description` - Short description of the product - *optional*
+- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+- `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
+- `has_options` - Does the product have sizes? 
+- `price` - Original price
+- `special_price` - Discounted price - *optional*
+- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+- `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+- `quantity` - Number of items available  *optional*
+- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
+- `weight` - Weight of the product (for shipping considerations) - *optional*
+- `country_of_manufacture` - Country of manufacture - *optional*
+- `gift_message_available` - Message to be added to the product - *optional*
+- `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+- `gift_wrapping_price` - Wrapping price - *optional*
+- `country_of_manufacture` - Country of manufacture - *optional*
+- `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+- `image_urls` - A list of image urls of the category - *optional*
+- `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+- `rma_enabled` - Can the item be returned?
+
+
+
+## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 12, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "updated_at": "2014-12-31T09:11:53Z", 
+                    "sku": "37-111432-406", 
+                    "name": "Contrast Pocket Shirt in Denim Blue", 
+                    "is_active": true, 
+                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                    "short_description": "Soft cotton-twill button-up"
+                    "new_from_date": "2015-01-01T00:00:00Z", 
+                    "new_to_date": "2015-31-01T00:00:00Z", 
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z", 
+                    "rma_enabled": true,
+                    "country_of_manufacture": "China",
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                    "promo_text": "15% OFF", 
+                    "tags": 
+                        [
+                            "black",
+                            "flanel",
+                            "winter"
+                        ]
+                }, 
+                {
+                    "id": 43, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "sku": "38-111449-421", 
+                    "name": "Denim Popover Shirt", 
+                    "is_active": true, 
+                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 65.00,
+                    "tier_price": 50.00,
+                    "tier_price_qty": 2,
+                    "hc_price": 60.00,
+                    "rma_enabled": true,
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                }
+            ]
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + is_active (boolean, `true`) ... Filter products by availability
+
+
+### List all Products [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Products Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create a Product [POST]
+
+
++ Request (application/json)
+
+    Attributes
+    - `attribute_set_id` - Attribute set id for configurable products (size, color, etc.) - *optional*
+    - `sku` - The sku of the configurable product
+    - `name` - Full name
+    - `description` - Description of the product
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `price` - Original price
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
+    - `rma_enabled` - Can the item be returned?
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `country_of_manufacture` - Country of manufacture - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+   
+            {
+                "attribute_set_id": 322, 
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "sku": "37-111432-406", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": 12, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "sku": "37-111432-406", 
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "required_options": true,
+                "has_options": true,
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
+                    
+            }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Product [/sites/{wid}/stores/{sid}/products/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id": 12, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "updated_at": "2014-12-31T09:11:53Z", 
+                "sku": "37-111432-406", 
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "required_options": true,
+                "has_options": true,
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
+
+### Retrieve a Product [GET]
+        
++ Request (application/json)
+
+    Attributes
+    - `website_id` - The website id associated to the shop
+    
+    + Header
+
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Product][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update a Product [PUT]
++ Request (application/json)
+
+    Attributes
+    - `sku` - The sku of the configurable product - *optional*
+    - `name` - Full name - *optional*
+    - `description` - Description of the product - *optional*
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `price` - Original price - *optional*
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
+    - `rma_enabled` - Can the item be returned? - *optional*
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+    
+    + Header
+
+    + Body
+
+            {
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "sku": "37-111432-406", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ]
+            }
+        
+        
++ Response 200
+
+    [Product][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Product [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+
 # Group Categories
 
 Categories are categories of products that can be nested.
@@ -988,7 +1027,6 @@ Attributes
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
 - `name` - The name of the category
 - `is_active` - Is the category available?
-- `image_urls` - A list of image urls of the category
 - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
 - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
 - `is_featured` - Is the category featured (on the front page)? - *optional*
@@ -999,6 +1037,7 @@ Attributes
 - `show_expiration` - If expires_at exists, show expiration date - *optional*
 - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
 - `subcategories` - Nested categories - *optional*
+- `image_urls` - A list of image urls of the category
 
 
 ## Categories Collection [/sites/{wid}/stores/{sid}/categories?{is_active}]
