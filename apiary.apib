@@ -295,26 +295,31 @@ Attributes
 Attributes
 - `id` - Product ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *Optional*
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
 - `sku` - The sku of the configurable product
 - `name` - Full name
 - `description` - Description of the product
-- `short_description` - Short description of the product - *Optional*
-- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
-- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
+- `short_description` - Short description of the product - *optional*
+- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
 - `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
 - `has_options` - Does the product have sizes? 
 - `price` - Original price
-- `special_price` - Discounted price - *Optional*
-- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *Optional*
-- `tier_price_qty` - Quantity required for tier price elligibility - *Optional*
-- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *Optional*
-- `gift_message_available` - Message to be added to the product - *Optional*
-- `gift_wrapping_available` - Wrapping to be added to the product - *Optional*
-- `gift_wrapping_price` - Wrapping price - *Optional*
-- `image_urls` - A list of image urls of the category - *Optional*
+- `special_price` - Discounted price - *optional*
+- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+- `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+- `quantity` - Number of items available (returns -1 if `required_options` is true) 
+- `inventory_status` - { "not_available", "in_stock", "low_stock", "out_of_stock" } (returns "not_available" if `required_options` is true) - *optional*
+- `gift_message_available` - Message to be added to the product - *optional*
+- `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+- `gift_wrapping_price` - Wrapping price - *optional*
+- `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+- `image_urls` - A list of image urls of the category - *optional*
+- `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+
 
 
 ## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
@@ -342,12 +347,20 @@ Attributes
                     "special_price": 40.00,
                     "special_from_date": "2015-11-11T00:00:00Z", 
                     "special_to_date": "2015-31-11T00:00:00Z", 
+                    "quantity": -1,
                     "image_urls": 
                         [
                             "https://...jpg",
                             "https://...jpg",
                             "https://...jpg"
                         ],
+                    "promo_text": "15% OFF", 
+                    "tags": 
+                        [
+                            "black",
+                            "flanel",
+                            "winter"
+                        ]
                 }, 
                 {
                     "id": 43, 
@@ -362,13 +375,14 @@ Attributes
                     "tier_price": 50.00,
                     "tier_price_qty": 2,
                     "hc_price": 60.00,
+                    "quantity": -1,
                     "image_urls": 
                         [
                             "https://...jpg",
                             "https://...jpg",
                             "https://...jpg"
                         ],
-                }, 
+                }
             ]
 + Parameters
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
@@ -406,21 +420,25 @@ Attributes
     - `sku` - The sku of the configurable product
     - `name` - Full name
     - `description` - Description of the product
-    - `short_description` - Short description of the product - *Optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
     - `price` - Original price
-    - `special_price` - Discounted price - *Optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *Optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *Optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *Optional*
-    - `gift_message_available` - Message to be added to the product - *Optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *Optional*
-    - `gift_wrapping_price` - Wrapping price - *Optional*
-    - `image_urls` - A list of image urls of the category - *Optional*
-
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `attribute_set` - Attribute set for configurable products (size, color, etc.) - *optional*
+    - `quantity` - Number of items available - *optional IF attribute in attribute_set requires options*
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
 
     + Headers
     
@@ -446,6 +464,13 @@ Attributes
                         "https://...jpg",
                         "https://...jpg"
                     ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
             }
 
 + Response 201 (application/json)
@@ -473,7 +498,15 @@ Attributes
                         "https://...jpg",
                         "https://...jpg",
                         "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
                     ]
+                    
             }
         
 + Response 400 (application/json)
@@ -510,6 +543,13 @@ Attributes
                         "https://...jpg",
                         "https://...jpg",
                         "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
                     ]
             }
             
@@ -546,23 +586,26 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `sku` - The sku of the configurable product - *Optional*
-    - `name` - Full name - *Optional*
-    - `description` - Description of the product - *Optional*
-    - `short_description` - Short description of the product - *Optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *Optional*
-    - `price` - Original price - *Optional*
-    - `special_price` - Discounted price - *Optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *Optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *Optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *Optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *Optional*
-    - `gift_message_available` - Message to be added to the product - *Optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *Optional*
-    - `gift_wrapping_price` - Wrapping price - *Optional*
-    - `image_urls` - A list of image urls of the category - *Optional*
+    - `sku` - The sku of the configurable product - *optional*
+    - `name` - Full name - *optional*
+    - `description` - Description of the product - *optional*
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `price` - Original price - *optional*
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
     
     + Header
 
@@ -607,6 +650,318 @@ Attributes
 + Response 500 (application/json)
 
 
+
+## Options Collection [/sites/{wid}/stores/{sid}/products/{pid}/options?{is_active}]
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 35, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "updated_at": "2014-12-31T09:11:53Z", 
+                    "sku": "37-111432-406-X", 
+                    "name": "Contrast Pocket Shirt in Denim Blue", 
+                    "is_active": true, 
+                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                    "short_description": "Soft cotton-twill button-up"
+                    "new_from_date": "2015-01-01T00:00:00Z", 
+                    "new_to_date": "2015-31-01T00:00:00Z", 
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z", 
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                }, 
+                {
+                    "id": 43, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "sku": "38-111449-421", 
+                    "name": "Denim Popover Shirt", 
+                    "is_active": true, 
+                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 65.00,
+                    "tier_price": 50.00,
+                    "tier_price_qty": 2,
+                    "hc_price": 60.00,
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                }
+            ]
+
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Product to perform action with.
+    + is_active (boolean, `true`) ... Filter options by availability
+    
+### List all Options [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Options Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create a Option [POST]
+
+
++ Request (application/json)
+
+    Attributes
+    - `name` - The name of the category
+    - `is_active` - Is the category available?
+    - `image_urls` - A list of image urls of the category
+    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
+    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
+    - `is_featured` - Is the category featured (on the front page)? - *optional*
+    - `is_hc_exclusive` - Is the category only visible to HC members? - *optional*
+    - `is_new_buyer_exclusive` - Is the category only visible to members with no order history? - *optional*
+    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
+    - `hide_name_over_images` - Should the name of the category be shown over images? - *optional*
+    - `show_expiration` - If expires_at exists, show expiration date - *optional*
+    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
+    - `subcategory_ids` - Nested category ids - *optional*
+
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+   
+            {
+                "name": "New HC Member Shop", 
+                "is_active": true,
+                "image_urls": 
+                    [
+                        "https://...jpg"
+                    ],
+                "starts_at": "2015-01-01T00:00:00Z", 
+                "expires_at": "2015-12-31T23:59:59Z", 
+                "is_hc_exclusive": true, 
+                "is_first_crate_exclusive": true, 
+                "subcategory_ids": 
+                    [
+                        311, 
+                        312, 
+                        313
+                    ]
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": 310,
+                "is_active": true,
+                "created_at": "2014-12-15T13:57:00Z", 
+                "name": "New HC Member Shop", 
+                "image_urls": 
+                    [
+                        "https://...jpg"
+                    ],
+                "starts_at": "2015-01-01T00:00:00Z", 
+                "expires_at": "2015-12-31T23:59:59Z", 
+                "is_hc_exclusive": true, 
+                "is_first_crate_exclusive": true, 
+                "subshops": 
+                    [
+                        {
+                            "id": 311,
+                            "is_active": true,
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Shirts", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }, 
+                        {
+                            "id": 312,
+                            "is_active": true,
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Blazers", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }, 
+                        {
+                            "id": 313,
+                            "is_active": true,
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "name": "HC Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ]
+                        }
+                    ]
+            }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Option [/sites/{wid}/stores/{sid}/categories/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id": 22, 
+                "is_active": true,
+                "created_at": "2014-03-15T13:57:00Z", 
+                "updated_at": "2014-04-31T09:11:53Z", 
+                "name": "Pants", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                    ],
+                "expires_at": "2015-01-31T00:00:00Z", 
+                "is_new_buyer_exclusive": true, 
+                "subshops": 
+                    [
+                        {
+                            "id": 221, 
+                            "created_at": "2014-03-16T13:57:00Z", 
+                            "updated_at": "2014-04-31T09:11:53Z", 
+                            "name": "Casual Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                ]
+                        },
+                        {
+                            "id": 222, 
+                            "created_at": "2014-03-16T13:57:00Z", 
+                            "updated_at": "2014-04-31T09:11:53Z", 
+                            "name": "Dressy Pants", 
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                ]
+                        }
+                    ]
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + id (required, number, `1`) ... Numeric `id` of the Category to perform action with. Has example value.
+
+### Retrieve a Option [GET]
+        
++ Request (application/json)
+    
+    + Header
+
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Option][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update a Option [PUT]
++ Request (application/json)
+
+    Attributes
+    - `name` - The name of the shop - *optional*
+    - `is_active` - Is the category available? - *optional*
+    - `image_urls` - A list of image urls of the shop - *optional*
+    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
+    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
+    - `is_featured` - Is the shop featured (on the front page)? - *optional*
+    - `is_hc_exclusive` - Is the shop only visible to HC members? - *optional*
+    - `is_new_buyer_exclusive` - Is the shop only visible to members with no order history? - *optional*
+    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
+    - `hide_name_over_images` - Should the name of the shop be shown over images? - *optional*
+    - `show_expiration` - If expires_at exists, show expiration date - *optional*
+    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
+    - `subshop_ids` - Nested shop ids - *optional*
+    
+    + Header
+
+    + Body
+
+            {
+                "name": "Pants", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                    ],
+                "expires_at": "2015-01-31T00:00:00Z", 
+                "is_new_buyer_exclusive": true, 
+                "subshop_ids": 
+                    [
+                        221, 
+                        222
+                    ]
+            }
+        
+        
++ Response 200
+
+    [Option][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Option [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
 
 
 # Group Categories
