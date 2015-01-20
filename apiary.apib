@@ -14,8 +14,8 @@ Attributes
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
 - `group_id` - Customer's group
 - `email` - Customer's Email Address
-- `first_name` - Customer's first name
-- `last_name` - Customer's last name
+- `first_name` - Customer's first name - *optional*
+- `last_name` - Customer's last name - *optional*
 - `gender` - Customer's gender (male or female) - *optional*
 - `birthdate` - Customer's birthdate - *optional*
 - `id_hash` - Customer's encrypted ID hash
@@ -123,8 +123,8 @@ Attributes
     Attributes
     - `group_id` - Customer's group - *optional*
     - `email` - Customer's Email Address
-    - `first_name` - Customer's first name
-    - `last_name` - Customer's last name
+    - `first_name` - Customer's first name - *optional*
+    - `last_name` - Customer's last name - *optional*
     - `gender` - Customer's gender (male or female) - *optional*
     - `birthdate` - Customer's birthdate - *optional*
     - `facebook_id` - Customer's facebook ID - *optional*
@@ -313,6 +313,8 @@ Attributes
 - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
 - `quantity` - Number of items available  *optional*
 - `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
+- `weight` - Weight of the product (for shipping considerations) - *optional*
+- `country_of_manufacture` - Country of manufacture - *optional*
 - `gift_message_available` - Message to be added to the product - *optional*
 - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
 - `gift_wrapping_price` - Wrapping price - *optional*
@@ -572,7 +574,7 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `website_id` - The website id associated to the shopfa
+    - `website_id` - The website id associated to the shop
     
     + Header
 
