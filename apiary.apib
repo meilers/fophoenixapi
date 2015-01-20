@@ -311,7 +311,7 @@ Attributes
 - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
 - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
 - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-- `quantity` - Number of items available (if  -1 if `required_options` is true) *optional*
+- `quantity` - Number of items available  *optional*
 - `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
 - `gift_message_available` - Message to be added to the product - *optional*
 - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
@@ -572,7 +572,7 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `website_id` - The website id associated to the shop
+    - `website_id` - The website id associated to the shopfa
     
     + Header
 
@@ -608,6 +608,7 @@ Attributes
     - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
     - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
     - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
+    - `rma_enabled` - Can the item be returned? - *optional*
     - `gift_message_available` - Message to be added to the product - *optional*
     - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
     - `gift_wrapping_price` - Wrapping price - *optional*
