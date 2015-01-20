@@ -4,6 +4,7 @@ HOST: http://api3-develop.frankandoak.com/rest/v3
 # F&O Phoenix API
 Universal API for Frank & Oak.
 
+
 # Group Customers
 
 Customers related resources of the **F&O Phoenix API**
@@ -290,20 +291,15 @@ Attributes
 
 + Response 500 (application/json)
 
+
 # Group Options
 
 Attributes
-- `id` - Product ID
+- `id` - Option ID (Product ID)
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
-- `sku` - The sku of the configurable product
-- `name` - Full name
-- `description` - Description of the product
-- `short_description` - Short description of the product - *optional*
-- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-- `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
-- `has_options` - Does the product have sizes? 
+- `is_active` - Is the product available?
+- `sku` - The sku of the product
 - `price` - Original price
 - `special_price` - Discounted price - *optional*
 - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
@@ -311,18 +307,9 @@ Attributes
 - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
 - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
 - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-- `quantity` - Number of items available  *optional*
-- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
+- `quantity` - Number of items available - *optional*
+- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } - *optional*
 - `weight` - Weight of the product (for shipping considerations) - *optional*
-- `country_of_manufacture` - Country of manufacture - *optional*
-- `gift_message_available` - Message to be added to the product - *optional*
-- `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-- `gift_wrapping_price` - Wrapping price - *optional*
-- `country_of_manufacture` - Country of manufacture - *optional*
-- `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-- `image_urls` - A list of image urls of the category - *optional*
-- `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-- `rma_enabled` - Can the item be returned?
 
 
 
@@ -335,48 +322,52 @@ Attributes
 
             [
                 {
-                    "id": 35, 
+                    "id": 55, 
                     "created_at": "2014-12-15T13:57:00Z", 
-                    "updated_at": "2014-12-31T09:11:53Z", 
-                    "sku": "37-111432-406-X", 
-                    "name": "Contrast Pocket Shirt in Denim Blue", 
                     "is_active": true, 
-                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                    "short_description": "Soft cotton-twill button-up"
-                    "new_from_date": "2015-01-01T00:00:00Z", 
-                    "new_to_date": "2015-31-01T00:00:00Z", 
-                    "required_options": true,
-                    "has_options": true,
+                    "sku": "37-111432-406-XS", 
                     "price": 55.00,
                     "special_price": 40.00,
                     "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z", 
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
+                    "special_to_date": "2015-31-11T00:00:00Z",
+                    "quantity": 122,
+                    "inventory_status": "in_stock"
                 }, 
                 {
-                    "id": 43, 
+                   "id": 56, 
                     "created_at": "2014-12-15T13:57:00Z", 
-                    "sku": "38-111449-421", 
-                    "name": "Denim Popover Shirt", 
                     "is_active": true, 
-                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
-                    "required_options": true,
-                    "has_options": true,
-                    "price": 65.00,
-                    "tier_price": 50.00,
-                    "tier_price_qty": 2,
-                    "hc_price": 60.00,
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
+                    "sku": "37-111432-406-S", 
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z",
+                    "quantity": 122,
+                    "inventory_status": "in_stock"
+                }, 
+                {
+                   "id": 57, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "is_active": true, 
+                    "sku": "37-111432-406-M", 
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z",
+                    "quantity": 122,
+                    "inventory_status": "in_stock"
+                }, 
+                {
+                   "id": 58, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "is_active": true, 
+                    "sku": "37-111432-406-L", 
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z",
+                    "quantity": 122,
+                    "inventory_status": "in_stock"
                 }
             ]
 
@@ -413,8 +404,8 @@ Attributes
 + Request (application/json)
 
     Attributes
+    - `is_active` - Is the product available?
     - `name` - The name of the category
-    - `is_active` - Is the category available?
     - `image_urls` - A list of image urls of the category
     - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
     - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
@@ -648,6 +639,7 @@ Attributes
 - `id` - Product ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `is_active` - Is the product available?
 - `sku` - The sku of the configurable product
 - `name` - Full name
 - `description` - Description of the product
@@ -670,7 +662,6 @@ Attributes
 - `gift_message_available` - Message to be added to the product - *optional*
 - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
 - `gift_wrapping_price` - Wrapping price - *optional*
-- `country_of_manufacture` - Country of manufacture - *optional*
 - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
 - `image_urls` - A list of image urls of the category - *optional*
 - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
@@ -775,6 +766,7 @@ Attributes
 
     Attributes
     - `attribute_set_id` - Attribute set id for configurable products (size, color, etc.) - *optional*
+    - `is_active` - Is the product available?
     - `sku` - The sku of the configurable product
     - `name` - Full name
     - `description` - Description of the product
@@ -949,6 +941,7 @@ Attributes
 + Request (application/json)
 
     Attributes
+    - `is_active` - Is the product available? - *optional*
     - `sku` - The sku of the configurable product - *optional*
     - `name` - Full name - *optional*
     - `description` - Description of the product - *optional*
