@@ -1,4 +1,5 @@
 FORMAT: 1A
+HOST: http://api3-develop.frankandoak.com/rest/v3
 
 # F&O Phoenix API
 Universal API for Frank & Oak.
@@ -849,7 +850,7 @@ Attributes
 
 + Response 500 (application/json)
         
-## Option [/sites/{wid}/stores/{sid}/categories/{id}]
+## Option [/sites/{wid}/stores/{sid}/products/{pid}/options/{id}]
 
 + Model (application/json)
 
@@ -898,6 +899,7 @@ Attributes
 + Parameters
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + pid (required, number, `1`) ... Numeric `id` of the Product to perform action with.
     + id (required, number, `1`) ... Numeric `id` of the Category to perform action with. Has example value.
 
 ### Retrieve a Option [GET]
