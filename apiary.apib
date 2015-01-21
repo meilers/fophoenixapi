@@ -4,1019 +4,6 @@ HOST: http://api3-develop.frankandoak.com/rest/v3
 # F&O Phoenix API
 Universal API for Frank & Oak.
 
-
-# Group Customers
-
-Customers related resources of the **F&O Phoenix API**
-
-
-Attributes
-- `id` - Customer's ID
-- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
-- `group_id` - Customer's group
-- `email` - Customer's Email Address
-- `first_name` - Customer's first name - *optional*
-- `last_name` - Customer's last name - *optional*
-- `gender` - Customer's gender (male or female) - *optional*
-- `birthdate` - Customer's birthdate - *optional*
-- `id_hash` - Customer's encrypted ID hash
-- `default_shipping_address_id` - Customer's default shipping address ID - *optional*
-- `default_billing_address_id` - Customer's default billing address ID - *optional*
-- `store_credit` - Customer's Store Credit (can't be updated from here)
-- `facebook_id` - Customer's facebook ID - *optional*
-- `google_id` - Customer's google ID - *optional*
-- `style` - Customer's style (casual, dressy, etc.) - *optional*
-- `shirt_size` - Customer's shirt size (XL, L...) - *optional*
-- `pants_size` - Customer's pants_size (30, 32...) - *optional*
-- `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
-- `shoe_size` - Customer's shoe size (10, 11...) - *optional*
-- `default_currency` - Customer's default Currency (associated to website_id)
-- `is_hc_member` - Is the member Hunt Club (use groupe_id == 4 for now)
-- `is_first_time_buyer` - Has Customer purchased anything before? Related to Order history
-
-
-## Customers Collection [/sites/{wid}/customers]
-
-+ Model (application/json)
-
-            
-    + Body
-
-            [
-                {
-                    "id": 1, 
-                    "created_at": "2015-01-07T13:57:00Z", 
-                    "updated_at": "2015-01-10T09:11:53Z", 
-                    "group_id": 4, 
-                    "id_hash": "32fe!ifew&?", 
-                    "email": "michael@frankandoak.com", 
-                    "first_name": "Michael", 
-                    "last_name": "Eilers Smith", 
-                    "gender": "male", 
-                    "birthdate": "03/17/1983", 
-                    "default_shipping_address_id":325413, 
-                    "default_billing_address_id": 270186,
-                    "store_credit": 41.66, 
-                    "facebook_id": 4324325242, 
-                    "google_id": 7643322533243, 
-                    "style":"casual", 
-                    "shirt_size":"L", 
-                    "pants_size":"34", 
-                    "blazer_size":"40R", 
-                    "shoe_size":"11", 
-                    "is_first_time_buyer":false,
-                    "is_hc_member":true
-                }, 
-                {
-                    "id": 2, 
-                    "created_at": "2015-01-07T13:57:00Z", 
-                    "updated_at": "2015-01-10T09:11:53Z", 
-                    "group_id": 1, 
-                    "id_hash": "r!were43e_)", 
-                    "email": "sean@frankandoak.com", 
-                    "first_name": "Sean", 
-                    "last_name": "Connery", 
-                    "gender": "male", 
-                    "birthdate": "03/17/1963", 
-                    "default_shipping_address_id":325413, 
-                    "default_billing_address_id": 270186,
-                    "store_credit": 41.66, 
-                    "facebook_id": 4324325242, 
-                    "google_id": 7643322533243, 
-                    "style":"casual", 
-                    "shirt_size":"L", 
-                    "pants_size":"34", 
-                    "blazer_size":"40R", 
-                    "shoe_size":"11", 
-                    "is_first_time_buyer":true,
-                    "is_hc_member":false
-                }
-            ]
-
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    
-### List all Customers [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr    
-            
-            
-+ Response 200
-
-    [Customers Collection][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-### Create a Customer [POST]
-
-+ Request (application/json)
-
-    Attributes
-    - `group_id` - Customer's group - *optional*
-    - `email` - Customer's Email Address
-    - `first_name` - Customer's first name - *optional*
-    - `last_name` - Customer's last name - *optional*
-    - `gender` - Customer's gender (male or female) - *optional*
-    - `birthdate` - Customer's birthdate - *optional*
-    - `facebook_id` - Customer's facebook ID - *optional*
-    - `google_id` - Customer's google ID - *optional*
-    - `style` - Customer's style (casual, dressy, etc.) - *optional*
-    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
-    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
-    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
-    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
-
-
-    + Headers
-    
-            X-Session-Token: grg42gtwegsfr   
-            
-    + Body
-    
-            {
-                "email": "michael@frankandoak.com", 
-                "first_name": "Michael", 
-                "last_name": "Eilers Smith", 
-                "gender": "male", 
-                "birthdate": "03/17/1983", 
-                "facebook_id": 4324325242, 
-                "google_id": 7643322533243
-            }
-
-+ Response 201 (application/json)
-
-        {
-            "id": 1, 
-            "created_at": "2015-01-07T13:57:00Z", 
-            "group_id": 1, 
-            "id_hash": "32fe!ifew&?", 
-            "email": "michael@frankandoak.com", 
-            "first_name": "Michael", 
-            "last_name": "Eilers Smith", 
-            "gender": "male", 
-            "birthdate": "03/17/1983", 
-            "store_credit": 0,00, 
-            "facebook_id": 4324325242, 
-            "google_id": 7643322533243, 
-            "is_first_time_buyer":true,
-            "is_hc_member":false
-        }
-        
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-        
-## Customer [/sites/{wid}/customers/{id}]
-
-+ Model (application/json)
-
-    + Header
-    
-    + Body
-    
-            {
-                "id":                                       1,  
-                "group_id":                                 1, 
-                "created_at":                               "2015-01-07T13:57:00Z", 
-                "updated_at":                               "2015-01-10T09:11:53Z", 
-                "id_hash":                                  "32fe!ifew&?", 
-                "email":                                    "michael@frankandoak.com", 
-                "first_name":                               "Michael", 
-                "last_name":                                "Eilers Smith", 
-                "gender":                                   "male", 
-                "birthdate":                                "03/17/1983", 
-                "store_credit":                             41.66, 
-                "facebook_id":                              4324325242, 
-                "google_id":                                7643322533243, 
-                "style":                                    "casual", 
-                "shirt_size":                               "L", 
-                "pants_size":                               "34", 
-                "blazer_size":                              "40R", 
-                "shoe_size":                                "11", 
-                "is_first_time_buyer":                      true,
-                "is_hc_member":                             false
-            }
-            
-            
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + id (required, number, `1`) ... Numeric `id` of the User to perform action with. 
-
-### Retrieve a Customer [GET]
-        
-+ Request (application/json)
-    
-    + Header
-
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr           
-            
-
-+ Response 200
-
-    [Customer][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-### Update a Customer [PUT]
-+ Request (application/json)
-
-    Attributes
-    - `group_id` - Customer's group - *optional*
-    - `email` - Customer's Email Address - *optional*
-    - `first_name` - Customer's first name - *optional*
-    - `last_name` - Customer's last name - *optional*
-    - `gender` - Customer's gender (male or female) - *optional*
-    - `birthdate` - Customer's birthdate - *optional*
-    - `default_shipping_address_id` - Customer's default shipping address ID - *optional*
-    - `default_billing_address_id` - Customer's default billing address ID - *optional*
-    - `store_credit` - Customer's Store Credit - *optional, admin permission*
-    - `facebook_id` - Customer's facebook ID - *optional*
-    - `google_id` - Customer's google ID - *optional*
-    - `style` - Customer's style (casual, dressy, etc.) - *optional*
-    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
-    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
-    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
-    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
-    
-    + Header
-
-    + Body
-
-            { 
-                "email": "michael@frankandoak.com", 
-                "first_name": "Michael", 
-                "last_name": "Eilers Smith", 
-                "gender": "male", 
-                "birthdate": "03/17/1983", 
-                "facebook_id": 4324325242, 
-                "google_id": 7643322533243, 
-                "style":"casual", 
-                "shirt_size":"L", 
-                "pants_size":"34", 
-                "blazer_size":"40R", 
-                "shoe_size":"11"
-            }
-        
-        
-+ Response 200
-
-    [Customer][]
-    
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-### Remove a Customer [DELETE]
-+ Response 204
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-# Group Options
-
-Attributes
-- `id` - Option ID (Product ID)
-- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
-- `is_active` - Is the product available?
-- `sku` - The sku of the product
-- `price` - Original price
-- `special_price` - Discounted price - *optional*
-- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-- `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-- `quantity` - Number of items available - *optional*
-- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } - *optional*
-- `weight` - Weight of the product (for shipping considerations) - *optional*
-
-
-
-## Options Collection [/sites/{wid}/stores/{sid}/products/{pid}/options?{is_active}]
-
-+ Model (application/json)
-
-            
-    + Body
-
-            [
-                {
-                    "id": 55, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "is_active": true, 
-                    "sku": "37-111432-406-XS", 
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z",
-                    "quantity": 122,
-                    "inventory_status": "in_stock"
-                }, 
-                {
-                   "id": 56, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "is_active": true, 
-                    "sku": "37-111432-406-S", 
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z",
-                    "quantity": 122,
-                    "inventory_status": "in_stock"
-                }, 
-                {
-                   "id": 57, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "is_active": true, 
-                    "sku": "37-111432-406-M", 
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z",
-                    "quantity": 122,
-                    "inventory_status": "in_stock"
-                }, 
-                {
-                   "id": 58, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "is_active": true, 
-                    "sku": "37-111432-406-L", 
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z",
-                    "quantity": 122,
-                    "inventory_status": "in_stock"
-                }
-            ]
-
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + pid (required, number, `1`) ... Numeric `id` of the Product to perform action with.
-    + is_active (boolean, `true`) ... Filter options by availability
-    
-### List all Options [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr    
-            
-            
-+ Response 200
-
-    [Options Collection][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-### Create a Option [POST]
-
-
-+ Request (application/json)
-
-    Attributes
-    - `is_active` - Is the product available?
-    - `name` - The name of the category
-    - `image_urls` - A list of image urls of the category
-    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
-    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
-    - `is_featured` - Is the category featured (on the front page)? - *optional*
-    - `is_hc_exclusive` - Is the category only visible to HC members? - *optional*
-    - `is_new_buyer_exclusive` - Is the category only visible to members with no order history? - *optional*
-    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
-    - `hide_name_over_images` - Should the name of the category be shown over images? - *optional*
-    - `show_expiration` - If expires_at exists, show expiration date - *optional*
-    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
-    - `subcategory_ids` - Nested category ids - *optional*
-
-
-    + Headers
-    
-            X-Session-Token: grg42gtwegsfr   
-            
-    + Body
-   
-            {
-                "name": "New HC Member Shop", 
-                "is_active": true,
-                "image_urls": 
-                    [
-                        "https://...jpg"
-                    ],
-                "starts_at": "2015-01-01T00:00:00Z", 
-                "expires_at": "2015-12-31T23:59:59Z", 
-                "is_hc_exclusive": true, 
-                "is_first_crate_exclusive": true, 
-                "subcategory_ids": 
-                    [
-                        311, 
-                        312, 
-                        313
-                    ]
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "id": 310,
-                "is_active": true,
-                "created_at": "2014-12-15T13:57:00Z", 
-                "name": "New HC Member Shop", 
-                "image_urls": 
-                    [
-                        "https://...jpg"
-                    ],
-                "starts_at": "2015-01-01T00:00:00Z", 
-                "expires_at": "2015-12-31T23:59:59Z", 
-                "is_hc_exclusive": true, 
-                "is_first_crate_exclusive": true, 
-                "subshops": 
-                    [
-                        {
-                            "id": 311,
-                            "is_active": true,
-                            "created_at": "2014-12-15T13:57:00Z", 
-                            "name": "HC Shirts", 
-                            "image_urls": 
-                                [
-                                    "https://...jpg",
-                                    "https://...jpg"
-                                ]
-                        }, 
-                        {
-                            "id": 312,
-                            "is_active": true,
-                            "created_at": "2014-12-15T13:57:00Z", 
-                            "name": "HC Blazers", 
-                            "image_urls": 
-                                [
-                                    "https://...jpg",
-                                    "https://...jpg"
-                                ]
-                        }, 
-                        {
-                            "id": 313,
-                            "is_active": true,
-                            "created_at": "2014-12-15T13:57:00Z", 
-                            "name": "HC Pants", 
-                            "image_urls": 
-                                [
-                                    "https://...jpg",
-                                    "https://...jpg"
-                                ]
-                        }
-                    ]
-            }
-        
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-        
-## Option [/sites/{wid}/stores/{sid}/products/{pid}/options/{id}]
-
-+ Model (application/json)
-
-    + Header
-    
-    + Body
-    
-            {
-                "id": 22, 
-                "is_active": true,
-                "created_at": "2014-03-15T13:57:00Z", 
-                "updated_at": "2014-04-31T09:11:53Z", 
-                "name": "Pants", 
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                    ],
-                "expires_at": "2015-01-31T00:00:00Z", 
-                "is_new_buyer_exclusive": true, 
-                "subshops": 
-                    [
-                        {
-                            "id": 221, 
-                            "created_at": "2014-03-16T13:57:00Z", 
-                            "updated_at": "2014-04-31T09:11:53Z", 
-                            "name": "Casual Pants", 
-                            "image_urls": 
-                                [
-                                    "https://...jpg",
-                                ]
-                        },
-                        {
-                            "id": 222, 
-                            "created_at": "2014-03-16T13:57:00Z", 
-                            "updated_at": "2014-04-31T09:11:53Z", 
-                            "name": "Dressy Pants", 
-                            "image_urls": 
-                                [
-                                    "https://...jpg",
-                                ]
-                        }
-                    ]
-            }
-            
-            
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + pid (required, number, `1`) ... Numeric `id` of the Product to perform action with.
-    + id (required, number, `1`) ... Numeric `id` of the Category to perform action with. Has example value.
-
-### Retrieve a Option [GET]
-        
-+ Request (application/json)
-    
-    + Header
-
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr           
-            
-
-+ Response 200
-
-    [Option][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-### Update a Option [PUT]
-+ Request (application/json)
-
-    Attributes
-    - `name` - The name of the shop - *optional*
-    - `is_active` - Is the category available? - *optional*
-    - `image_urls` - A list of image urls of the shop - *optional*
-    - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
-    - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop expires - *optional*
-    - `is_featured` - Is the shop featured (on the front page)? - *optional*
-    - `is_hc_exclusive` - Is the shop only visible to HC members? - *optional*
-    - `is_new_buyer_exclusive` - Is the shop only visible to members with no order history? - *optional*
-    - `is_first_crate_exclusive` - If is_hc_exclusive is true, is the shop only visible to HC members with no crate history? - *optional*
-    - `hide_name_over_images` - Should the name of the shop be shown over images? - *optional*
-    - `show_expiration` - If expires_at exists, show expiration date - *optional*
-    - `show_expiration_as_countdown` - If expires_at exists and show_expiration is true, show time to expiration as a countdown (vs just date) - *optional*
-    - `subshop_ids` - Nested shop ids - *optional*
-    
-    + Header
-
-    + Body
-
-            {
-                "name": "Pants", 
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                    ],
-                "expires_at": "2015-01-31T00:00:00Z", 
-                "is_new_buyer_exclusive": true, 
-                "subshop_ids": 
-                    [
-                        221, 
-                        222
-                    ]
-            }
-        
-        
-+ Response 200
-
-    [Option][]
-    
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-### Remove a Option [DELETE]
-+ Response 204
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-
-# Group Products
-
-Attributes
-- `id` - Product ID
-- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
-- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
-- `is_active` - Is the product available?
-- `type` - { "configurable", "simple" }
-- `attribute_set` - Attribute set (e.g. fao_shirt) - *optional*
-- `sku` - The sku of the configurable product
-- `name` - Full name
-- `description` - Description of the product
-- `short_description` - Short description of the product - *optional*
-- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-- `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
-- `has_options` - Does the product have sizes? 
-- `price` - Original price
-- `special_price` - Discounted price - *optional*
-- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-- `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-- `quantity` - Number of items available - *optional*
-- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
-- `weight` - Weight of the product (for shipping considerations) - *optional*
-- `country_of_manufacture` - Country of manufacture - *optional*
-- `gift_message_available` - Message to be added to the product - *optional*
-- `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-- `gift_wrapping_price` - Wrapping price - *optional*
-- `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-- `image_urls` - A list of image urls of the category - *optional*
-- `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-- `rma_enabled` - Can the item be returned?
-
-
-## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
-
-Configurable Product of Frank & Oak. Options optional.
-
-+ Model (application/json)
-
-            
-    + Body
-
-            [
-                {
-                    "id": 12, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "updated_at": "2014-12-31T09:11:53Z", 
-                    "is_active": true, 
-                    "type": "configurable", 
-                    "attribute_set": 11, 
-                    "sku": "37-111432-406", 
-                    "name": "Contrast Pocket Shirt in Denim Blue",
-                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                    "short_description": "Soft cotton-twill button-up"
-                    "new_from_date": "2015-01-01T00:00:00Z", 
-                    "new_to_date": "2015-31-01T00:00:00Z", 
-                    "required_options": true,
-                    "has_options": true,
-                    "price": 55.00,
-                    "special_price": 40.00,
-                    "special_from_date": "2015-11-11T00:00:00Z", 
-                    "special_to_date": "2015-31-11T00:00:00Z", 
-                    "rma_enabled": true,
-                    "country_of_manufacture": "China",
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
-                    "promo_text": "15% OFF", 
-                    "tags": 
-                        [
-                            "black",
-                            "flanel",
-                            "winter"
-                        ]
-                }, 
-                {
-                    "id": 43, 
-                    "created_at": "2014-12-15T13:57:00Z", 
-                    "is_active": true, 
-                    "type": "configurable", 
-                    "attribute_set": 11, 
-                    "sku": "38-111449-421", 
-                    "name": "Denim Popover Shirt", 
-                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
-                    "required_options": true,
-                    "has_options": true,
-                    "price": 65.00,
-                    "tier_price": 50.00,
-                    "tier_price_qty": 2,
-                    "hc_price": 60.00,
-                    "rma_enabled": true,
-                    "image_urls": 
-                        [
-                            "https://...jpg",
-                            "https://...jpg",
-                            "https://...jpg"
-                        ],
-                }
-            ]
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + is_active (boolean, `true`) ... Filter products by availability
-
-
-### List all Products [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr    
-            
-            
-+ Response 200
-
-    [Products Collection][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-### Create a Product [POST]
-
-
-+ Request (application/json)
-
-    Attributes
-    - `attribute_set_id` - Attribute set id for configurable products (size, color, etc.) - *optional*
-    - `is_active` - Is the product available?
-    - `sku` - The sku of the configurable product
-    - `name` - Full name
-    - `description` - Description of the product
-    - `short_description` - Short description of the product - *optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `price` - Original price
-    - `special_price` - Discounted price - *optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned?
-    - `gift_message_available` - Message to be added to the product - *optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-    - `gift_wrapping_price` - Wrapping price - *optional*
-    - `country_of_manufacture` - Country of manufacture - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-
-    + Headers
-    
-            X-Session-Token: grg42gtwegsfr   
-            
-    + Body
-   
-            {
-                "attribute_set_id": 322, 
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "sku": "37-111432-406", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "id": 12, 
-                "created_at": "2014-12-15T13:57:00Z", 
-                "sku": "37-111432-406", 
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "required_options": true,
-                "has_options": true,
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-                    
-            }
-        
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-        
-## Product [/sites/{wid}/stores/{sid}/products/{id}]
-
-+ Model (application/json)
-
-    + Header
-    
-    + Body
-    
-            {
-                "id": 12, 
-                "created_at": "2014-12-15T13:57:00Z", 
-                "updated_at": "2014-12-31T09:11:53Z", 
-                "sku": "37-111432-406", 
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "required_options": true,
-                "has_options": true,
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ],
-                "promo_text": "15% OFF", 
-                "tags": 
-                    [
-                        "black",
-                        "flanel",
-                        "winter"
-                    ]
-            }
-            
-            
-+ Parameters
-    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
-    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
-
-### Retrieve a Product [GET]
-        
-+ Request (application/json)
-
-    Attributes
-    - `website_id` - The website id associated to the shop
-    
-    + Header
-
-            If-Modified-Since: 2015-01-07T13:57:00Z
-            X-Session-Token: grg42gtwegsfr           
-            
-
-+ Response 200
-
-    [Product][]
-
-+ Response 304
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-### Update a Product [PUT]
-+ Request (application/json)
-
-    Attributes
-    - `is_active` - Is the product available? - *optional*
-    - `sku` - The sku of the configurable product - *optional*
-    - `name` - Full name - *optional*
-    - `description` - Description of the product - *optional*
-    - `short_description` - Short description of the product - *optional*
-    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
-    - `price` - Original price - *optional*
-    - `special_price` - Discounted price - *optional*
-    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
-    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
-    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
-    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
-    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned? - *optional*
-    - `gift_message_available` - Message to be added to the product - *optional*
-    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
-    - `gift_wrapping_price` - Wrapping price - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
-    - `image_urls` - A list of image urls of the category - *optional*
-    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-    
-    + Header
-
-    + Body
-
-            {
-                "name": "Contrast Pocket Shirt in Denim Blue", 
-                "sku": "37-111432-406", 
-                "is_active": true, 
-                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
-                "short_description": "Soft cotton-twill button-up"
-                "new_from_date": "2015-01-01T00:00:00Z", 
-                "new_to_date": "2015-31-01T00:00:00Z", 
-                "price": 55.00,
-                "special_price": 40.00,
-                "special_from_date": "2015-11-11T00:00:00Z", 
-                "special_to_date": "2015-31-11T00:00:00Z", 
-                "image_urls": 
-                    [
-                        "https://...jpg",
-                        "https://...jpg",
-                        "https://...jpg"
-                    ]
-            }
-        
-        
-+ Response 200
-
-    [Product][]
-    
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-### Remove a Product [DELETE]
-+ Response 204
-
-+ Response 400 (application/json)
-
-+ Response 500 (application/json)
-
-
-
-
 # Group Categories
 
 Categories are categories of products that can be nested.
@@ -1382,5 +369,756 @@ Attributes
 + Response 400 (application/json)
 
 + Response 500 (application/json)
+
+
+
+# Group Customers
+
+Customers related resources of the **F&O Phoenix API**
+
+
+Attributes
+- `id` - Customer's ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `group_id` - Customer's group
+- `email` - Customer's Email Address
+- `first_name` - Customer's first name - *optional*
+- `last_name` - Customer's last name - *optional*
+- `gender` - Customer's gender (male or female) - *optional*
+- `birthdate` - Customer's birthdate - *optional*
+- `id_hash` - Customer's encrypted ID hash
+- `default_shipping_address_id` - Customer's default shipping address ID - *optional*
+- `default_billing_address_id` - Customer's default billing address ID - *optional*
+- `store_credit` - Customer's Store Credit (can't be updated from here)
+- `facebook_id` - Customer's facebook ID - *optional*
+- `google_id` - Customer's google ID - *optional*
+- `style` - Customer's style (casual, dressy, etc.) - *optional*
+- `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+- `pants_size` - Customer's pants_size (30, 32...) - *optional*
+- `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+- `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+- `default_currency` - Customer's default Currency (associated to website_id)
+- `is_hc_member` - Is the member Hunt Club (use groupe_id == 4 for now)
+- `is_first_time_buyer` - Has Customer purchased anything before? Related to Order history
+
+
+## Customers Collection [/sites/{wid}/customers]
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 1, 
+                    "created_at": "2015-01-07T13:57:00Z", 
+                    "updated_at": "2015-01-10T09:11:53Z", 
+                    "group_id": 4, 
+                    "id_hash": "32fe!ifew&?", 
+                    "email": "michael@frankandoak.com", 
+                    "first_name": "Michael", 
+                    "last_name": "Eilers Smith", 
+                    "gender": "male", 
+                    "birthdate": "03/17/1983", 
+                    "default_shipping_address_id":325413, 
+                    "default_billing_address_id": 270186,
+                    "store_credit": 41.66, 
+                    "facebook_id": 4324325242, 
+                    "google_id": 7643322533243, 
+                    "style":"casual", 
+                    "shirt_size":"L", 
+                    "pants_size":"34", 
+                    "blazer_size":"40R", 
+                    "shoe_size":"11", 
+                    "is_first_time_buyer":false,
+                    "is_hc_member":true
+                }, 
+                {
+                    "id": 2, 
+                    "created_at": "2015-01-07T13:57:00Z", 
+                    "updated_at": "2015-01-10T09:11:53Z", 
+                    "group_id": 1, 
+                    "id_hash": "r!were43e_)", 
+                    "email": "sean@frankandoak.com", 
+                    "first_name": "Sean", 
+                    "last_name": "Connery", 
+                    "gender": "male", 
+                    "birthdate": "03/17/1963", 
+                    "default_shipping_address_id":325413, 
+                    "default_billing_address_id": 270186,
+                    "store_credit": 41.66, 
+                    "facebook_id": 4324325242, 
+                    "google_id": 7643322533243, 
+                    "style":"casual", 
+                    "shirt_size":"L", 
+                    "pants_size":"34", 
+                    "blazer_size":"40R", 
+                    "shoe_size":"11", 
+                    "is_first_time_buyer":true,
+                    "is_hc_member":false
+                }
+            ]
+
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    
+### List all Customers [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Customers Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create a Customer [POST]
+
++ Request (application/json)
+
+    Attributes
+    - `group_id` - Customer's group - *optional*
+    - `email` - Customer's Email Address
+    - `first_name` - Customer's first name - *optional*
+    - `last_name` - Customer's last name - *optional*
+    - `gender` - Customer's gender (male or female) - *optional*
+    - `birthdate` - Customer's birthdate - *optional*
+    - `facebook_id` - Customer's facebook ID - *optional*
+    - `google_id` - Customer's google ID - *optional*
+    - `style` - Customer's style (casual, dressy, etc.) - *optional*
+    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
+    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+    
+            {
+                "email": "michael@frankandoak.com", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "gender": "male", 
+                "birthdate": "03/17/1983", 
+                "facebook_id": 4324325242, 
+                "google_id": 7643322533243
+            }
+
++ Response 201 (application/json)
+
+        {
+            "id": 1, 
+            "created_at": "2015-01-07T13:57:00Z", 
+            "group_id": 1, 
+            "id_hash": "32fe!ifew&?", 
+            "email": "michael@frankandoak.com", 
+            "first_name": "Michael", 
+            "last_name": "Eilers Smith", 
+            "gender": "male", 
+            "birthdate": "03/17/1983", 
+            "store_credit": 0,00, 
+            "facebook_id": 4324325242, 
+            "google_id": 7643322533243, 
+            "is_first_time_buyer":true,
+            "is_hc_member":false
+        }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Customer [/sites/{wid}/customers/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id":                                       1,  
+                "group_id":                                 1, 
+                "created_at":                               "2015-01-07T13:57:00Z", 
+                "updated_at":                               "2015-01-10T09:11:53Z", 
+                "id_hash":                                  "32fe!ifew&?", 
+                "email":                                    "michael@frankandoak.com", 
+                "first_name":                               "Michael", 
+                "last_name":                                "Eilers Smith", 
+                "gender":                                   "male", 
+                "birthdate":                                "03/17/1983", 
+                "store_credit":                             41.66, 
+                "facebook_id":                              4324325242, 
+                "google_id":                                7643322533243, 
+                "style":                                    "casual", 
+                "shirt_size":                               "L", 
+                "pants_size":                               "34", 
+                "blazer_size":                              "40R", 
+                "shoe_size":                                "11", 
+                "is_first_time_buyer":                      true,
+                "is_hc_member":                             false
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + id (required, number, `1`) ... Numeric `id` of the User to perform action with. 
+
+### Retrieve a Customer [GET]
+        
++ Request (application/json)
+    
+    + Header
+
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Customer][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update a Customer [PUT]
++ Request (application/json)
+
+    Attributes
+    - `group_id` - Customer's group - *optional*
+    - `email` - Customer's Email Address - *optional*
+    - `first_name` - Customer's first name - *optional*
+    - `last_name` - Customer's last name - *optional*
+    - `gender` - Customer's gender (male or female) - *optional*
+    - `birthdate` - Customer's birthdate - *optional*
+    - `default_shipping_address_id` - Customer's default shipping address ID - *optional*
+    - `default_billing_address_id` - Customer's default billing address ID - *optional*
+    - `store_credit` - Customer's Store Credit - *optional, admin permission*
+    - `facebook_id` - Customer's facebook ID - *optional*
+    - `google_id` - Customer's google ID - *optional*
+    - `style` - Customer's style (casual, dressy, etc.) - *optional*
+    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
+    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+    
+    + Header
+
+    + Body
+
+            { 
+                "email": "michael@frankandoak.com", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "gender": "male", 
+                "birthdate": "03/17/1983", 
+                "facebook_id": 4324325242, 
+                "google_id": 7643322533243, 
+                "style":"casual", 
+                "shirt_size":"L", 
+                "pants_size":"34", 
+                "blazer_size":"40R", 
+                "shoe_size":"11"
+            }
+        
+        
++ Response 200
+
+    [Customer][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Customer [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+
+# Group Products
+
+Attributes
+- `id` - Product ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `is_active` - Is the product available?
+- `type` - { "configurable", "simple" }
+- `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
+- `sku` - The sku of the configurable product
+- `name` - Full name
+- `description` - Description of the product
+- `short_description` - Short description of the product - *optional*
+- `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+- `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+- `required_options` - Does the product require sizes? (if not, can add directly to cart for example)
+- `has_options` - Does the product have sizes? 
+- `price` - Original price
+- `special_price` - Discounted price - *optional*
+- `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+- `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+- `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+- `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+- `quantity` - Number of items available - *optional*
+- `inventory_status` - {  "in_stock", "low_stock", "out_of_stock" } *optional*
+- `weight` - Weight of the product (for shipping considerations) - *optional*
+- `country_of_manufacture` - Country of manufacture - *optional*
+- `gift_message_available` - Message to be added to the product - *optional*
+- `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+- `gift_wrapping_price` - Wrapping price - *optional*
+- `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+- `image_urls` - A list of image urls of the category - *optional*
+- `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+- `rma_enabled` - Can the item be returned?
+- `options` - Array of associated products that are the options of the product (if applicable) - *optional*
+
+## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
+
+Products of Frank & Oak (configurable and simple). Options are optional and will only be returned when querying one resource.
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 12, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "updated_at": "2014-12-31T09:11:53Z", 
+                    "is_active": true, 
+                    "type": "configurable", 
+                    "attribute_set_id": 11, 
+                    "sku": "37-111432-406", 
+                    "name": "Contrast Pocket Shirt in Denim Blue",
+                    "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                    "short_description": "Soft cotton-twill button-up"
+                    "new_from_date": "2015-01-01T00:00:00Z", 
+                    "new_to_date": "2015-31-01T00:00:00Z", 
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 55.00,
+                    "special_price": 40.00,
+                    "special_from_date": "2015-11-11T00:00:00Z", 
+                    "special_to_date": "2015-31-11T00:00:00Z", 
+                    "rma_enabled": true,
+                    "country_of_manufacture": "China",
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                    "promo_text": "15% OFF", 
+                    "tags": 
+                        [
+                            "black",
+                            "flanel",
+                            "winter"
+                        ]
+                }, 
+                {
+                    "id": 43, 
+                    "created_at": "2014-12-15T13:57:00Z", 
+                    "is_active": true, 
+                    "type": "configurable", 
+                    "attribute_set": 11, 
+                    "sku": "38-111449-421", 
+                    "name": "Denim Popover Shirt", 
+                    "description": "Our easy-to-wear Denim Popover Shirt mixes the casualness of a polo shirt with the refinement of a button-down. The soft washed denim doesn’t hurt the casual appeal either. Throw it on under a wool overshirt for a layered look or with dark jeans for that double denim look. Features included button flap chest pocket, back hang loop, custom Frank & Oak buttons. 100% cotton.",
+                    "required_options": true,
+                    "has_options": true,
+                    "price": 65.00,
+                    "tier_price": 50.00,
+                    "tier_price_qty": 2,
+                    "hc_price": 60.00,
+                    "rma_enabled": true,
+                    "image_urls": 
+                        [
+                            "https://...jpg",
+                            "https://...jpg",
+                            "https://...jpg"
+                        ],
+                }
+            ]
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + is_active (boolean, `true`) ... Filter products by availability
+
+
+### List all Products [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Products Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create a Product [POST]
+
+
++ Request (application/json)
+
+    Attributes
+    - `attribute_set_id` - Attribute set id for configurable products (size, color, etc.) - *optional*
+    - `is_active` - Is the product available? 
+    - `type` - { "configurable", "simple" }
+    - `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
+    - `sku` - The sku of the configurable product
+    - `name` - Full name
+    - `description` - Description of the product
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `price` - Original price
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
+    - `rma_enabled` - Can the item be returned?
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `country_of_manufacture` - Country of manufacture - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+   
+            {
+                "is_active": true, 
+                "type": "configurable", 
+                "attribute_set_id": 322, 
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "sku": "37-111432-406", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": 12, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "is_active": true, 
+                "type": "configurable",
+                "attribute_set_id": 322, 
+                "sku": "37-111432-406", 
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "is_active": true, 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "required_options": true,
+                "has_options": true,
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ]
+                    
+            }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Product [/sites/{wid}/stores/{sid}/products/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id": 12, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "updated_at": "2014-12-31T09:11:53Z", 
+                "is_active": true, 
+                "type": "configurable",
+                "attribute_set_id": 322, 
+                "sku": "37-111432-406", 
+                "name": "Contrast Pocket Shirt in Denim Blue",
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "required_options": true,
+                "has_options": true,
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ],
+                "options":
+                    [
+                        {
+                            "id": 123, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "updated_at": "2014-12-31T09:11:53Z", 
+                            "is_active": true, 
+                            "type": "simple",
+                            "sku": "37-111432-406-XS", 
+                            "name": "Contrast Pocket Shirt in Denim Blue-XS",
+                            "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                            "short_description": "Soft cotton-twill button-up"
+                            "required_options": false,
+                            "has_options": false,
+                            "price": 55.00,
+                            "special_price": 40.00,
+                            "special_from_date": "2015-11-11T00:00:00Z", 
+                            "special_to_date": "2015-31-11T00:00:00Z", 
+                            "rma_enabled": true,
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ],
+                            "promo_text": "15% OFF", 
+                            "tags": 
+                                [
+                                    "black",
+                                    "flanel",
+                                    "winter"
+                                ]
+                        },
+                        {
+                            "id": 124, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "updated_at": "2014-12-31T09:11:53Z", 
+                            "is_active": true, 
+                            "type": "simple",
+                            "sku": "37-111432-406-S", 
+                            "name": "Contrast Pocket Shirt in Denim Blue-S",
+                            "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                            "short_description": "Soft cotton-twill button-up"
+                            "required_options": false,
+                            "has_options": false,
+                            "price": 60.00,
+                            "rma_enabled": true,
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ],
+                            "promo_text": "15% OFF", 
+                            "tags": 
+                                [
+                                    "black",
+                                    "flanel",
+                                    "winter"
+                                ]
+                        }
+                    ]
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
+
+### Retrieve a Product [GET]
+        
++ Request (application/json)
+
+    Attributes
+    - `website_id` - The website id associated to the shop
+    
+    + Header
+
+            If-Modified-Since: 2015-01-07T13:57:00Z
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Product][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update a Product [PUT]
++ Request (application/json)
+
+    Attributes
+    - `is_active` - Is the product available? - *optional*
+    - `type` - { "configurable", "simple" } - *optional*
+    - `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
+    - `sku` - The sku of the configurable product - *optional*
+    - `name` - Full name - *optional*
+    - `description` - Description of the product - *optional*
+    - `short_description` - Short description of the product - *optional*
+    - `new_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `new_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is considered as new - *optional*
+    - `price` - Original price - *optional*
+    - `special_price` - Discounted price - *optional*
+    - `special_from_date` - Starting UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `special_to_date` - Ending UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) when product is on sale - *optional*
+    - `tier_price` - Tier price (e.g. Buy 1 at original price, but buy 3 and get a discount) - *optional*
+    - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
+    - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
+    - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
+    - `rma_enabled` - Can the item be returned? - *optional*
+    - `gift_message_available` - Message to be added to the product - *optional*
+    - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
+    - `gift_wrapping_price` - Wrapping price - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
+    - `image_urls` - A list of image urls of the category - *optional*
+    - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
+    
+    + Header
+
+    + Body
+
+            {
+                "name": "Contrast Pocket Shirt in Denim Blue", 
+                "is_active": true, 
+                "type": "configurable",
+                "attribute_set_id": 322, 
+                "sku": "37-111432-406", 
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ]
+            }
+        
+        
++ Response 200
+
+    [Product][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Product [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+
 
 
