@@ -27,7 +27,7 @@ Attributes
 - `image_urls` - A list of image urls of the category
 
 
-## Categories Collection [/sites/{wid}/stores/{sid}/categories?{is_active}]
+## Categories Collection [/sites/{wid}/stores/{sid}/categories]
 
 + Model (application/json)
 
@@ -116,7 +116,6 @@ Attributes
 + Parameters
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + is_active (boolean, `true`) ... Filter categories by availability
     
 ### List all Categories [GET]
 
@@ -663,9 +662,7 @@ Attributes
 
 # Group Products
 
-Products of Frank & Oak (configurable and simple). Options are optional and will only be returned when querying one resource.
-
-
+Products of Frank & Oak (configurable and simple). 
 
 **Attributes**
 - `id` - Product ID
@@ -702,7 +699,7 @@ Products of Frank & Oak (configurable and simple). Options are optional and will
 - `rma_enabled` - Can the item be returned?
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
-## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}]
+## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active&type&group_by}]
 
 + Model (application/json)
 
@@ -773,7 +770,8 @@ Products of Frank & Oak (configurable and simple). Options are optional and will
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     + is_active (boolean, `true`) ... Filter products by availability
-
+    + type (string, `configurable`) ... Filter products by type
+    + group_by (string, `base_sku`) ... Filter products by type
 
 ### List all Products [GET]
 
