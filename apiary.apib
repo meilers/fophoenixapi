@@ -117,12 +117,12 @@ Attributes
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     
-### List all Categories [GET]
+### GET /sites/{wid}/stores/{sid}/categorie{is_active}
 
++ Parameters
+    + is_active (boolean, `true`) ... Filter categories by availability
+        
 + Request (application/json)
-
-    + Parameters
-        + is_active (boolean, `true`) ... Filter categories by availability
     
     + Headers
     
