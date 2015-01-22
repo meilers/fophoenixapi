@@ -27,7 +27,7 @@ Attributes
 - `image_urls` - A list of image urls of the category
 
 
-## Categories Collection [/sites/{wid}/stores/{sid}/categories?{is_active}]
+## Categories Collection [/sites/{wid}/stores/{sid}/categories]
 
 + Model (application/json)
 
@@ -116,12 +116,14 @@ Attributes
 + Parameters
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
-    + is_active (boolean, `true`) ... Filter categories by availability
     
 ### List all Categories [GET]
 
 + Request (application/json)
 
+    + Parameters
+        + is_active (boolean, `true`) ... Filter categories by availability
+    
     + Headers
     
             If-Modified-Since: 2015-01-07T13:57:00Z
