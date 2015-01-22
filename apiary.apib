@@ -704,7 +704,7 @@ Products of Frank & Oak (configurable and simple).
 - `rma_enabled` - Can the item be returned?
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
-## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active&type&group_by}]
+## Products Collection [/sites/{wid}/stores/{sid}/products?{is_active}{type}{parents_only}]
 
 + Model (application/json)
 
@@ -771,15 +771,17 @@ Products of Frank & Oak (configurable and simple).
                         ],
                 }
             ]
+
+
+### List all Products [GET]
+
 + Parameters
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     + is_active (boolean, `true`) ... Filter products by availability
     + type (string, `configurable`) ... Filter products by type
-    + group_by (string, `base_sku`) ... Filter products by type
-
-### List all Products [GET]
-
+    + parents_only (boolean, `true`) ... Filter products by descendance (no options)
+    
 + Request (application/json)
 
     + Headers
@@ -801,7 +803,10 @@ Products of Frank & Oak (configurable and simple).
 
 ### Create a Product [POST]
 
-
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    
 + Request (application/json)
 
     Attributes
