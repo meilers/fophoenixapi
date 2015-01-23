@@ -704,7 +704,7 @@ Products of Frank & Oak (configurable and simple).
 - `rma_enabled` - Can the item be returned?
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
-## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?type}{?parents_only}]
+## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?type}{?is_parent}]
 
 + Model (application/json)
 
@@ -780,7 +780,7 @@ Products of Frank & Oak (configurable and simple).
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     + is_active (boolean, `true`) ... Filter products by availability
     + type (string, `configurable`) ... Filter products by type
-    + parents_only (boolean, `true`) ... Filter products by descendance (no options)
+    + is_parent (boolean, `true`) ... Filter products by descendance (no options)
     
 + Request (application/json)
 
