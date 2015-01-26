@@ -705,7 +705,7 @@ Products of Frank & Oak (configurable and simple).
 - `favorite_count` - Number of times the product was favorited - *optional*
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
-## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?type}{?is_parent}]
+## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?is_parent}{?type}]
 
 + Model (application/json)
 
@@ -780,9 +780,9 @@ Products of Frank & Oak (configurable and simple).
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     + is_active (boolean, `true`) ... Filter products by availability
-    + type (string, `configurable`) ... Filter products by type
     + is_parent (boolean, `true`) ... Filter products by descendance (no options)
-    
+    + type (string, `configurable`) ... Filter products by type
+
 + Request (application/json)
 
     + Headers
