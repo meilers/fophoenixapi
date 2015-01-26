@@ -522,6 +522,7 @@ Attributes
             {
                 "id": 12, 
                 "created_at": "2014-12-15T13:57:00Z", 
+                "position": 1,
                 "is_active": true, 
                 "type": "configurable",
                 "attribute_set_id": 322, 
@@ -675,7 +676,7 @@ Attributes
     + cid (required, number, `1`) ... Numeric `id` of the Category to perform action with.
     + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
 
-### Retrieve a Product [GET]
+### Retrieve a Category Product [GET]
         
 + Request (application/json)
     
@@ -694,6 +695,40 @@ Attributes
 + Response 400 (application/json)
 
 + Response 500 (application/json)
+
+
+### Update a Category Product [PUT]
++ Request (application/json)
+
+    Attributes
+    - `position` - Position of the Product in the Category - *optional*
+    
+    + Header
+
+    + Body
+
+            {
+                "position": 2
+            }
+        
+        
++ Response 200
+
+    [Product][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Un-Assign a Product to a Category [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
 
 
 # Group Customers
