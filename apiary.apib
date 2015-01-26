@@ -376,6 +376,42 @@ Attributes
 
 
 
+## Category Products Collection [/sites/{wid}/stores/{sid}/categories/{cid}/products{?is_active}{?is_parent}{?type}]
+
++ Model (application/json)
+    [Product][]
+
+    
+### List All Categories [GET] 
+
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + cid (required, number, `1`) ... Numeric `id` of the Product to perform action with.
+    + is_active (boolean, `true`) ... Filter categories by availability
+    + is_parent (boolean, `true`) ... Filter products by descendance (no options)
+    + type (string, `configurable`) ... Filter products by type
+    
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: Fri, 23 Jan 2015 20:50:05 GMT
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Category Products Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
 # Group Customers
 
 Customers related resources of the **F&O Phoenix API**
