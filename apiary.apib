@@ -6,9 +6,9 @@ Universal API for Frank & Oak.
 
 # Group Categories
 
-Categories are categories of products that can be nested.
+Categories (formally known as shops/subshops) are group of products that are mostly related to each other. They can be nested, for example the Pants category can contain the Denim Pants and Sweat Pants categories.
 
-Attributes
+**Attributes**
 - `id` - Category's ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
@@ -384,7 +384,7 @@ Attributes
 
 # Group Category Products
 
-Category Products are products associated to a Category
+Category Products are products associated to a Category.
 
 **Attributes extend Product attributes**
 - `position` - Position of the Product inside the Category - *optional*
