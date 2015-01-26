@@ -476,6 +476,138 @@ Attributes
 + Response 500 (application/json)
 
 
+## Category Product [/sites/{wid}/stores/{sid}/categories/{cid}/products/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id": 12, 
+                "created_at": "2014-12-15T13:57:00Z", 
+                "updated_at": "2014-12-31T09:11:53Z", 
+                "is_active": true, 
+                "type": "configurable",
+                "attribute_set_id": 322, 
+                "sku": "37-111432-406", 
+                "name": "Contrast Pocket Shirt in Denim Blue",
+                "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                "short_description": "Soft cotton-twill button-up"
+                "new_from_date": "2015-01-01T00:00:00Z", 
+                "new_to_date": "2015-31-01T00:00:00Z", 
+                "required_options": true,
+                "has_options": true,
+                "price": 55.00,
+                "special_price": 40.00,
+                "special_from_date": "2015-11-11T00:00:00Z", 
+                "special_to_date": "2015-31-11T00:00:00Z", 
+                "rma_enabled": true,
+                "image_urls": 
+                    [
+                        "https://...jpg",
+                        "https://...jpg",
+                        "https://...jpg"
+                    ],
+                "promo_text": "15% OFF", 
+                "tags": 
+                    [
+                        "black",
+                        "flanel",
+                        "winter"
+                    ],
+                "options":
+                    [
+                        {
+                            "id": 123, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "updated_at": "2014-12-31T09:11:53Z", 
+                            "is_active": true, 
+                            "type": "simple",
+                            "sku": "37-111432-406-XS", 
+                            "name": "Contrast Pocket Shirt in Denim Blue-XS",
+                            "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                            "short_description": "Soft cotton-twill button-up"
+                            "required_options": false,
+                            "has_options": false,
+                            "price": 55.00,
+                            "special_price": 40.00,
+                            "special_from_date": "2015-11-11T00:00:00Z", 
+                            "special_to_date": "2015-31-11T00:00:00Z", 
+                            "rma_enabled": true,
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ],
+                            "promo_text": "15% OFF", 
+                            "tags": 
+                                [
+                                    "black",
+                                    "flanel",
+                                    "winter"
+                                ]
+                        },
+                        {
+                            "id": 124, 
+                            "created_at": "2014-12-15T13:57:00Z", 
+                            "updated_at": "2014-12-31T09:11:53Z", 
+                            "is_active": true, 
+                            "type": "simple",
+                            "sku": "37-111432-406-S", 
+                            "name": "Contrast Pocket Shirt in Denim Blue-S",
+                            "description": "We've taken this slim casual basic and added an element of cool. This soft cotton-twill button-up has been given a unique textured knit pocket to make it a stylish choice. It's simple design means you can wear it with most anything. Features include custom Frank & Oak buttons, rounded cuffs, and button-down collar. Machine wash. 100% cotton."
+                            "short_description": "Soft cotton-twill button-up"
+                            "required_options": false,
+                            "has_options": false,
+                            "price": 60.00,
+                            "rma_enabled": true,
+                            "image_urls": 
+                                [
+                                    "https://...jpg",
+                                    "https://...jpg",
+                                    "https://...jpg"
+                                ],
+                            "promo_text": "15% OFF", 
+                            "tags": 
+                                [
+                                    "black",
+                                    "flanel",
+                                    "winter"
+                                ]
+                        }
+                    ]
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
+    + cid (required, number, `1`) ... Numeric `id` of the Category to perform action with.
+    + id (required, number, `1`) ... Numeric `id` of the Product to perform action with. Has example value.
+
+### Retrieve a Product [GET]
+        
++ Request (application/json)
+    
+    + Header
+
+            If-Modified-Since: Fri, 23 Jan 2015 20:50:05 GMT
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Product][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
 
 # Group Customers
 
@@ -1135,9 +1267,6 @@ Products of Frank & Oak (configurable and simple).
 ### Retrieve a Product [GET]
         
 + Request (application/json)
-
-    Attributes
-    - `website_id` - The website id associated to the shop
     
     + Header
 
