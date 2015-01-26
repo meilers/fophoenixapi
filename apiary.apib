@@ -13,6 +13,7 @@ Attributes
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
 - `name` - The name of the category
+- `position` - Position of the Category at his level in the tree - *optional*
 - `is_active` - Is the category available?
 - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
 - `expires_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category expires - *optional*
@@ -40,6 +41,7 @@ Attributes
                     "created_at": "2014-12-15T13:57:00Z", 
                     "updated_at": "2014-12-31T09:11:53Z", 
                     "name": "The Forward Issue", 
+                    "position": 1, 
                     "image_urls": 
                         [
                             "https://...jpg",
@@ -52,11 +54,10 @@ Attributes
                 }, 
                             {
                     "id": 7, 
-                    "website_id": 1, 
-                    "store_id": 1, 
                     "created_at": "2015-02-15T13:57:00Z", 
                     "updated_at": "2014-04-31T09:11:53Z", 
                     "name": "Welcome Offer", 
+                    "position": 2, 
                     "image_urls": 
                         [
                             "https://...jpg",
@@ -72,11 +73,10 @@ Attributes
                 
                 {
                     "id": 22, 
-                    "website_id": 1, 
-                    "store_id": 1, 
                     "created_at": "2014-03-15T13:57:00Z", 
                     "updated_at": "2014-04-31T09:11:53Z", 
                     "name": "Pants", 
+                    "position": 3, 
                     "image_urls": 
                         [
                             "https://...jpg",
@@ -150,6 +150,7 @@ Attributes
 
     Attributes
     - `name` - The name of the category
+    - `position` - Position of the category at his level in the tree - *optional*
     - `is_active` - Is the category available?
     - `image_urls` - A list of image urls of the category
     - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the category starts - *optional*
@@ -172,6 +173,7 @@ Attributes
    
             {
                 "name": "New HC Member Shop", 
+                "position": 1, 
                 "is_active": true,
                 "image_urls": 
                     [
@@ -198,6 +200,7 @@ Attributes
                 "is_active": true,
                 "created_at": "2014-12-15T13:57:00Z", 
                 "name": "New HC Member Shop", 
+                "position": 1, 
                 "image_urls": 
                     [
                         "https://...jpg"
@@ -262,6 +265,7 @@ Attributes
                 "created_at": "2014-03-15T13:57:00Z", 
                 "updated_at": "2014-04-31T09:11:53Z", 
                 "name": "Pants", 
+                "position": 4, 
                 "image_urls": 
                     [
                         "https://...jpg",
@@ -275,6 +279,7 @@ Attributes
                             "created_at": "2014-03-16T13:57:00Z", 
                             "updated_at": "2014-04-31T09:11:53Z", 
                             "name": "Casual Pants", 
+                            "position": 1, 
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -285,6 +290,7 @@ Attributes
                             "created_at": "2014-03-16T13:57:00Z", 
                             "updated_at": "2014-04-31T09:11:53Z", 
                             "name": "Dressy Pants", 
+                            "position": 2, 
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -324,6 +330,7 @@ Attributes
 
     Attributes
     - `name` - The name of the shop - *optional*
+    - `position` - Position of the category at his level in the tree - *optional*
     - `is_active` - Is the category available? - *optional*
     - `image_urls` - A list of image urls of the shop - *optional*
     - `starts_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when the shop starts - *optional*
