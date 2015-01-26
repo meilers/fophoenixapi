@@ -404,7 +404,7 @@ Attributes
                     "special_price": 40.00,
                     "special_from_date": "2015-11-11T00:00:00Z", 
                     "special_to_date": "2015-31-11T00:00:00Z", 
-                    "rma_enabled": true,
+                    "is_returnable": true,
                     "country_of_manufacture": "China",
                     "image_urls": 
                         [
@@ -435,7 +435,7 @@ Attributes
                     "tier_price": 50.00,
                     "tier_price_qty": 2,
                     "hc_price": 60.00,
-                    "rma_enabled": true,
+                    "is_returnable": true,
                     "image_urls": 
                         [
                             "https://...jpg",
@@ -503,7 +503,7 @@ Attributes
                 "special_price": 40.00,
                 "special_from_date": "2015-11-11T00:00:00Z", 
                 "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
+                "is_returnable": true,
                 "image_urls": 
                     [
                         "https://...jpg",
@@ -535,7 +535,7 @@ Attributes
                             "special_price": 40.00,
                             "special_from_date": "2015-11-11T00:00:00Z", 
                             "special_to_date": "2015-31-11T00:00:00Z", 
-                            "rma_enabled": true,
+                            "is_returnable": true,
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -563,7 +563,7 @@ Attributes
                             "required_options": false,
                             "has_options": false,
                             "price": 60.00,
-                            "rma_enabled": true,
+                            "is_returnable": true,
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -934,7 +934,7 @@ Products of Frank & Oak (configurable and simple).
 - `promo_text` - Short promo text of the product, e.g. "50% off", "Editor's pick", etc. - *optional*
 - `image_urls` - A list of image urls of the category - *optional*
 - `tags` - List of tags that describe the product, e.g. black, flanel, etc. - *optional*
-- `rma_enabled` - Can the item be returned?
+- `is_returnable` - Can the item be returned?
 - `favorite_count` - Number of times the product was favorited - *optional*
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
@@ -965,7 +965,7 @@ Products of Frank & Oak (configurable and simple).
                     "special_price": 40.00,
                     "special_from_date": "2015-11-11T00:00:00Z", 
                     "special_to_date": "2015-31-11T00:00:00Z", 
-                    "rma_enabled": true,
+                    "is_returnable": true,
                     "country_of_manufacture": "China",
                     "image_urls": 
                         [
@@ -996,7 +996,7 @@ Products of Frank & Oak (configurable and simple).
                     "tier_price": 50.00,
                     "tier_price_qty": 2,
                     "hc_price": 60.00,
-                    "rma_enabled": true,
+                    "is_returnable": true,
                     "image_urls": 
                         [
                             "https://...jpg",
@@ -1062,7 +1062,7 @@ Products of Frank & Oak (configurable and simple).
     - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
     - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
     - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned?
+    - `is_returnable` - Can the item be returned?
     - `gift_message_available` - Message to be added to the product - *optional*
     - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
     - `gift_wrapping_price` - Wrapping price - *optional*
@@ -1093,7 +1093,7 @@ Products of Frank & Oak (configurable and simple).
                 "special_price": 40.00,
                 "special_from_date": "2015-11-11T00:00:00Z", 
                 "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
+                "is_returnable": true,
                 "image_urls": 
                     [
                         "https://...jpg",
@@ -1132,7 +1132,7 @@ Products of Frank & Oak (configurable and simple).
                 "special_price": 40.00,
                 "special_from_date": "2015-11-11T00:00:00Z", 
                 "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
+                "is_returnable": true,
                 "image_urls": 
                     [
                         "https://...jpg",
@@ -1180,7 +1180,7 @@ Products of Frank & Oak (configurable and simple).
                 "special_price": 40.00,
                 "special_from_date": "2015-11-11T00:00:00Z", 
                 "special_to_date": "2015-31-11T00:00:00Z", 
-                "rma_enabled": true,
+                "is_returnable": true,
                 "image_urls": 
                     [
                         "https://...jpg",
@@ -1212,7 +1212,7 @@ Products of Frank & Oak (configurable and simple).
                             "special_price": 40.00,
                             "special_from_date": "2015-11-11T00:00:00Z", 
                             "special_to_date": "2015-31-11T00:00:00Z", 
-                            "rma_enabled": true,
+                            "is_returnable": true,
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -1240,7 +1240,7 @@ Products of Frank & Oak (configurable and simple).
                             "required_options": false,
                             "has_options": false,
                             "price": 60.00,
-                            "rma_enabled": true,
+                            "is_returnable": true,
                             "image_urls": 
                                 [
                                     "https://...jpg",
@@ -1305,7 +1305,7 @@ Products of Frank & Oak (configurable and simple).
     - `tier_price_qty` - Quantity required for tier price elligibility - *optional*
     - `hc_price` - Hunt Club Customer Group price (group id == 4 e.g.) - *optional*
     - `quantity` - Number of items available - *IF all attributes in attribute_set do not require options*
-    - `rma_enabled` - Can the item be returned? - *optional*
+    - `is_returnable` - Can the item be returned? - *optional*
     - `gift_message_available` - Message to be added to the product - *optional*
     - `gift_wrapping_available` - Wrapping to be added to the product - *optional*
     - `gift_wrapping_price` - Wrapping price - *optional*
