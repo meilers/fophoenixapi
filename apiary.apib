@@ -21,7 +21,6 @@ Attributes
 - `postcode` - Postal code of Address
 - `telephone` - Telephone of Address - *optional*
 - `company` - Company of Address - *optional*
-- `postcode` - Postal code of Address
 - `is_default_billing` - Is the Address the default Billing Address of the User?
 - `is_default_shipping` - Is the Address the default Shipping Address of the User?
 
@@ -43,14 +42,30 @@ Attributes
                     "country_id": "CA", 
                     "region_id": 76, 
                     "city": "Montreal", 
-                    
                     "street_line_1": "187 Casgrain", 
                     "street_line_2": "Apt. 23", 
                     "postcode": "J2S2H2", 
-                    "city": "Montreal", 
-                    
+                    "telephone": "15145024314", 
+                    "company": "Frank & Oak", 
+                    "is_default_billing": true, 
+                    "is_default_shipping": false 
                 }, 
                 {
+                    "id": 2, 
+                    "created_at": "2015-01-07T13:57:00Z", 
+                    "updated_at": "2015-01-10T09:11:53Z", 
+                    "first_name": "Superman", 
+                    "last_name": "007", 
+                    "country_id": "CA", 
+                    "region_id": 76, 
+                    "city": "Montreal", 
+                    "street_line_1": "321 Batcave", 
+                    "street_line_2": "Platform 7 3/4", 
+                    "postcode": "H0H0H0", 
+                    "telephone": "19008700002", 
+                    "company": "The Avengers", 
+                    "is_default_billing": false, 
+                    "is_default_shipping": true 
                 }
             ]
 
