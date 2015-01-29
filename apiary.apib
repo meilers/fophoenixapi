@@ -4,6 +4,258 @@ HOST: http://api3-develop.frankandoak.com/rest/v3
 # F&O Phoenix API
 Universal API for Frank & Oak.
 
+# Group Addresses
+
+Attributes
+- `id` - Address ID
+- `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
+- `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated
+- `first_name` - First Name of person at this Address
+- `last_name` - Last Name of person at this Address
+- `country_id` - Country ID of Address
+- `region_id` - Region ID of Address
+- `region` - Region of Address
+- `city` - City of Address
+- `street_line_1` - Street of Address
+- `street_line_2` - Street of Address (continued) - *optional*
+- `postcode` - Postal code of Address
+- `telephone` - Telephone of Address - *optional*
+- `company` - Company of Address - *optional*
+- `postcode` - Postal code of Address
+- `is_default_billing` - Is the Address the default Billing Address of the User?
+- `is_default_shipping` - Is the Address the default Shipping Address of the User?
+
+
+## Addresses Collection [/sites/{wid}/customers/{cid}/addresses]
+
++ Model (application/json)
+
+            
+    + Body
+
+            [
+                {
+                    "id": 1, 
+                    "created_at": "2015-01-07T13:57:00Z", 
+                    "updated_at": "2015-01-10T09:11:53Z", 
+                    "first_name": "Michael", 
+                    "last_name": "Eilers Smith", 
+                    "country_id": "CA", 
+                    "region_id": 76, 
+                    "city": "Montreal", 
+                    
+                    "street_line_1": "187 Casgrain", 
+                    "street_line_2": "Apt. 23", 
+                    "postcode": "J2S2H2", 
+                    "city": "Montreal", 
+                    
+                }, 
+                {
+                }
+            ]
+
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + cid (required, number, `1`) ... Numeric `id` of the Customer to perform action with.
+
+### List all Addresses [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            If-Modified-Since: Fri, 23 Jan 2015 20:50:05 GMT
+            X-Session-Token: grg42gtwegsfr    
+            
+            
++ Response 200
+
+    [Customers Collection][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+### Create an Address [POST]
+
++ Request (application/json)
+
+    Attributes
+    - `group_id` - Customer's group - *optional*
+    - `email` - Customer's Email Address
+    - `first_name` - Customer's first name - *optional*
+    - `last_name` - Customer's last name - *optional*
+    - `gender` - Customer's gender (male or female) - *optional*
+    - `birthdate` - Customer's birthdate - *optional*
+    - `facebook_id` - Customer's facebook ID - *optional*
+    - `google_id` - Customer's google ID - *optional*
+    - `style` - Customer's style (casual, dressy, etc.) - *optional*
+    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
+    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+
+
+    + Headers
+    
+            X-Session-Token: grg42gtwegsfr   
+            
+    + Body
+    
+            {
+                "email": "michael@frankandoak.com", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "gender": "male", 
+                "birthdate": "03/17/1983", 
+                "facebook_id": 4324325242, 
+                "google_id": 7643322533243
+            }
+
++ Response 201 (application/json)
+
+        {
+            "id": 1, 
+            "created_at": "2015-01-07T13:57:00Z", 
+            "group_id": 1, 
+            "id_hash": "32fe!ifew&?", 
+            "email": "michael@frankandoak.com", 
+            "first_name": "Michael", 
+            "last_name": "Eilers Smith", 
+            "gender": "male", 
+            "birthdate": "03/17/1983", 
+            "store_credit": 0,00, 
+            "facebook_id": 4324325242, 
+            "google_id": 7643322533243, 
+            "is_first_time_buyer":true,
+            "is_hc_member":false
+        }
+        
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+        
+## Address [/sites/{wid}/customers/{cid}/addresses/{id}]
+
++ Model (application/json)
+
+    + Header
+    
+    + Body
+    
+            {
+                "id":                                       1,  
+                "group_id":                                 1, 
+                "created_at":                               "2015-01-07T13:57:00Z", 
+                "updated_at":                               "2015-01-10T09:11:53Z", 
+                "id_hash":                                  "32fe!ifew&?", 
+                "email":                                    "michael@frankandoak.com", 
+                "first_name":                               "Michael", 
+                "last_name":                                "Eilers Smith", 
+                "gender":                                   "male", 
+                "birthdate":                                "03/17/1983", 
+                "store_credit":                             41.66, 
+                "facebook_id":                              4324325242, 
+                "google_id":                                7643322533243, 
+                "style":                                    "casual", 
+                "shirt_size":                               "L", 
+                "pants_size":                               "34", 
+                "blazer_size":                              "40R", 
+                "shoe_size":                                "11", 
+                "is_first_time_buyer":                      true,
+                "is_hc_member":                             false
+            }
+            
+            
++ Parameters
+    + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
+    + cid (required, number, `1`) ... Numeric `id` of the Customer to perform action with. 
+    + id (required, number, `1`) ... Numeric `id` of the Address to perform action with. 
+
+### Retrieve an Address [GET]
+        
++ Request (application/json)
+    
+    + Header
+
+            If-Modified-Since: Fri, 23 Jan 2015 20:50:05 GMT
+            X-Session-Token: grg42gtwegsfr           
+            
+
++ Response 200
+
+    [Address][]
+
++ Response 304
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+### Update an Address [PUT]
++ Request (application/json)
+
+    Attributes
+    - `group_id` - Customer's group - *optional*
+    - `email` - Customer's Email Address - *optional*
+    - `first_name` - Customer's first name - *optional*
+    - `last_name` - Customer's last name - *optional*
+    - `gender` - Customer's gender (male or female) - *optional*
+    - `birthdate` - Customer's birthdate - *optional*
+    - `default_shipping_address_id` - Customer's default shipping address ID - *optional*
+    - `default_billing_address_id` - Customer's default billing address ID - *optional*
+    - `store_credit` - Customer's Store Credit - *optional, admin permission*
+    - `facebook_id` - Customer's facebook ID - *optional*
+    - `google_id` - Customer's google ID - *optional*
+    - `style` - Customer's style (casual, dressy, etc.) - *optional*
+    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
+    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
+    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
+    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+    
+    + Header
+
+    + Body
+
+            { 
+                "email": "michael@frankandoak.com", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "gender": "male", 
+                "birthdate": "03/17/1983", 
+                "facebook_id": 4324325242, 
+                "google_id": 7643322533243, 
+                "style":"casual", 
+                "shirt_size":"L", 
+                "pants_size":"34", 
+                "blazer_size":"40R", 
+                "shoe_size":"11"
+            }
+        
+        
++ Response 200
+
+    [Address][]
+    
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+### Remove a Customer [DELETE]
++ Response 204
+
++ Response 400 (application/json)
+
++ Response 500 (application/json)
+
+
+
+
 # Group Categories
 
 Categories (formally known as shops/subshops) contain groups of products. They can be nested, for example the Pants category can contain the Denim Pants and Sweat Pants categories.
