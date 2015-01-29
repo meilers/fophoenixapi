@@ -99,19 +99,19 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `group_id` - Customer's group - *optional*
-    - `email` - Customer's Email Address
-    - `first_name` - Customer's first name - *optional*
-    - `last_name` - Customer's last name - *optional*
-    - `gender` - Customer's gender (male or female) - *optional*
-    - `birthdate` - Customer's birthdate - *optional*
-    - `facebook_id` - Customer's facebook ID - *optional*
-    - `google_id` - Customer's google ID - *optional*
-    - `style` - Customer's style (casual, dressy, etc.) - *optional*
-    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
-    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
-    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
-    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+    - `first_name` - First Name of person at this Address
+    - `last_name` - Last Name of person at this Address
+    - `country_id` - Country ID of Address
+    - `region_id` - Region ID of Address
+    - `region` - Region of Address
+    - `city` - City of Address
+    - `street_line_1` - Street of Address
+    - `street_line_2` - Street of Address (continued) - *optional*
+    - `postcode` - Postal code of Address
+    - `telephone` - Telephone of Address - *optional*
+    - `company` - Company of Address - *optional*
+    - `is_default_billing` - Is the Address the default Billing Address of the User? - *optional*
+    - `is_default_shipping` - Is the Address the default Shipping Address of the User? - *optional*
 
 
     + Headers
@@ -121,13 +121,18 @@ Attributes
     + Body
     
             {
-                "email": "michael@frankandoak.com", 
                 "first_name": "Michael", 
                 "last_name": "Eilers Smith", 
-                "gender": "male", 
-                "birthdate": "03/17/1983", 
-                "facebook_id": 4324325242, 
-                "google_id": 7643322533243
+                "country_id": "CA", 
+                "region_id": 76, 
+                "city": "Montreal", 
+                "street_line_1": "187 Casgrain", 
+                "street_line_2": "Apt. 23", 
+                "postcode": "J2S2H2", 
+                "telephone": "15145024314", 
+                "company": "Frank & Oak", 
+                "is_default_billing": true, 
+                "is_default_shipping": false 
             }
 
 + Response 201 (application/json)
@@ -135,18 +140,19 @@ Attributes
         {
             "id": 1, 
             "created_at": "2015-01-07T13:57:00Z", 
-            "group_id": 1, 
-            "id_hash": "32fe!ifew&?", 
-            "email": "michael@frankandoak.com", 
+            "updated_at": "2015-01-10T09:11:53Z", 
             "first_name": "Michael", 
             "last_name": "Eilers Smith", 
-            "gender": "male", 
-            "birthdate": "03/17/1983", 
-            "store_credit": 0,00, 
-            "facebook_id": 4324325242, 
-            "google_id": 7643322533243, 
-            "is_first_time_buyer":true,
-            "is_hc_member":false
+            "country_id": "CA", 
+            "region_id": 76, 
+            "city": "Montreal", 
+            "street_line_1": "187 Casgrain", 
+            "street_line_2": "Apt. 23", 
+            "postcode": "J2S2H2", 
+            "telephone": "15145024314", 
+            "company": "Frank & Oak", 
+            "is_default_billing": true, 
+            "is_default_shipping": false 
         }
         
 + Response 400 (application/json)
@@ -162,26 +168,21 @@ Attributes
     + Body
     
             {
-                "id":                                       1,  
-                "group_id":                                 1, 
-                "created_at":                               "2015-01-07T13:57:00Z", 
-                "updated_at":                               "2015-01-10T09:11:53Z", 
-                "id_hash":                                  "32fe!ifew&?", 
-                "email":                                    "michael@frankandoak.com", 
-                "first_name":                               "Michael", 
-                "last_name":                                "Eilers Smith", 
-                "gender":                                   "male", 
-                "birthdate":                                "03/17/1983", 
-                "store_credit":                             41.66, 
-                "facebook_id":                              4324325242, 
-                "google_id":                                7643322533243, 
-                "style":                                    "casual", 
-                "shirt_size":                               "L", 
-                "pants_size":                               "34", 
-                "blazer_size":                              "40R", 
-                "shoe_size":                                "11", 
-                "is_first_time_buyer":                      true,
-                "is_hc_member":                             false
+                "id": 1, 
+                "created_at": "2015-01-07T13:57:00Z", 
+                "updated_at": "2015-01-10T09:11:53Z", 
+                "first_name": "Michael", 
+                "last_name": "Eilers Smith", 
+                "country_id": "CA", 
+                "region_id": 76, 
+                "city": "Montreal", 
+                "street_line_1": "187 Casgrain", 
+                "street_line_2": "Apt. 23", 
+                "postcode": "J2S2H2", 
+                "telephone": "15145024314", 
+                "company": "Frank & Oak", 
+                "is_default_billing": true, 
+                "is_default_shipping": false 
             }
             
             
@@ -214,40 +215,40 @@ Attributes
 + Request (application/json)
 
     Attributes
-    - `group_id` - Customer's group - *optional*
-    - `email` - Customer's Email Address - *optional*
-    - `first_name` - Customer's first name - *optional*
-    - `last_name` - Customer's last name - *optional*
-    - `gender` - Customer's gender (male or female) - *optional*
-    - `birthdate` - Customer's birthdate - *optional*
-    - `default_shipping_address_id` - Customer's default shipping address ID - *optional*
-    - `default_billing_address_id` - Customer's default billing address ID - *optional*
-    - `store_credit` - Customer's Store Credit - *optional, admin permission*
-    - `facebook_id` - Customer's facebook ID - *optional*
-    - `google_id` - Customer's google ID - *optional*
-    - `style` - Customer's style (casual, dressy, etc.) - *optional*
-    - `shirt_size` - Customer's shirt size (XL, L...) - *optional*
-    - `pants_size` - Customer's pants_size (30, 32...) - *optional*
-    - `blazer_size` - Customer's blazer size (40R, 42R...) - *optional*
-    - `shoe_size` - Customer's shoe size (10, 11...) - *optional*
+    - `first_name` - First Name of person at this Address - *optional*
+    - `last_name` - Last Name of person at this Address - *optional*
+    - `country_id` - Country ID of Address - *optional*
+    - `region_id` - Region ID of Address - *optional*
+    - `region` - Region of Address - *optional*
+    - `city` - City of Address - *optional*
+    - `street_line_1` - Street of Address - *optional*
+    - `street_line_2` - Street of Address (continued) - *optional*
+    - `postcode` - Postal code of Address - *optional*
+    - `telephone` - Telephone of Address - *optional*
+    - `company` - Company of Address - *optional*
+    - `is_default_billing` - Is the Address the default Billing Address of the User? - *optional*
+    - `is_default_shipping` - Is the Address the default Shipping Address of the User? - *optional*
     
     + Header
 
     + Body
 
             { 
-                "email": "michael@frankandoak.com", 
+                "id": 1, 
+                "created_at": "2015-01-07T13:57:00Z", 
+                "updated_at": "2015-01-10T09:11:53Z", 
                 "first_name": "Michael", 
                 "last_name": "Eilers Smith", 
-                "gender": "male", 
-                "birthdate": "03/17/1983", 
-                "facebook_id": 4324325242, 
-                "google_id": 7643322533243, 
-                "style":"casual", 
-                "shirt_size":"L", 
-                "pants_size":"34", 
-                "blazer_size":"40R", 
-                "shoe_size":"11"
+                "country_id": "CA", 
+                "region_id": 76, 
+                "city": "Montreal", 
+                "street_line_1": "187 Casgrain", 
+                "street_line_2": "Apt. 23", 
+                "postcode": "J2S2H2", 
+                "telephone": "15145024314", 
+                "company": "Frank & Oak", 
+                "is_default_billing": true, 
+                "is_default_shipping": false 
             }
         
         
@@ -261,7 +262,7 @@ Attributes
 
 
 
-### Remove a Customer [DELETE]
+### Remove an Address [DELETE]
 + Response 204
 
 + Response 400 (application/json)
