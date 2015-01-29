@@ -1292,6 +1292,7 @@ Products of Frank & Oak (configurable and simple).
 - `id` - Product ID
 - `created_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for when this object was created
 - `updated_at` - UTC timestamp ([ISO 8601](http://www.w3.org/TR/NOTE-datetime)) for last time this object was updated - *optional*
+- `parent_id` - Parent product ID - *optional*
 - `is_active` - Is the product available?
 - `type` - { "configurable", "simple" }
 - `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
@@ -1323,7 +1324,7 @@ Products of Frank & Oak (configurable and simple).
 - `favorite_count` - Number of times the product was favorited - *optional*
 - `options` - Array of associated products that are the options of the product (if applicable) - *optional*
 
-## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?is_parent}{?type}]
+## Products Collection [/sites/{wid}/stores/{sid}/products{?is_active}{?hide_options}{?type}]
 
 + Model (application/json)
 
@@ -1407,7 +1408,7 @@ Products of Frank & Oak (configurable and simple).
     + wid (required, number, `1`) ... Numeric `id` of the Site to perform action with.
     + sid (required, number, `1`) ... Numeric `id` of the Store to perform action with.
     + is_active (boolean, `true`) ... Filter products by availability
-    + is_parent (boolean, `true`) ... Filter products by descendance (no options)
+    + hide_options (boolean, `true`) ... Filter products by descendance (no options)
     + type (string, `configurable`) ... Filter products by type
 
 + Request (application/json)
@@ -1439,6 +1440,7 @@ Products of Frank & Oak (configurable and simple).
 
     Attributes
     - `attribute_set_id` - Attribute set id for configurable products (size, color, etc.) - *optional*
+    - `parent_id` - Parent product Id - *optional*
     - `is_active` - Is the product available? 
     - `type` - { "configurable", "simple" }
     - `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
@@ -1593,6 +1595,7 @@ Products of Frank & Oak (configurable and simple).
                             "id": 123, 
                             "created_at": "2014-12-15T13:57:00Z", 
                             "updated_at": "2014-12-31T09:11:53Z", 
+                            "parent_id": 12,
                             "is_active": true, 
                             "type": "simple",
                             "sku": "37-111432-406-XS", 
@@ -1624,6 +1627,7 @@ Products of Frank & Oak (configurable and simple).
                             "id": 124, 
                             "created_at": "2014-12-15T13:57:00Z", 
                             "updated_at": "2014-12-31T09:11:53Z", 
+                            "parent_id": 12,
                             "is_active": true, 
                             "type": "simple",
                             "sku": "37-111432-406-S", 
@@ -1681,6 +1685,7 @@ Products of Frank & Oak (configurable and simple).
 + Request (application/json)
 
     Attributes
+    - `parent_id` - Parent product Id - *optional*
     - `is_active` - Is the product available? - *optional*
     - `type` - { "configurable", "simple" } - *optional*
     - `attribute_set_id` - Attribute set ID (e.g. 11 for fao_shirt) - *optional*
